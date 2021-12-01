@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_01_024612) do
+ActiveRecord::Schema.define(version: 2021_12_01_035724) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,7 +20,18 @@ ActiveRecord::Schema.define(version: 2021_12_01_024612) do
     t.string "hq_city_state"
     t.boolean "fdic_ins"
     t.boolean "mobile_app"
-    t.decimal "size_by_assets" #how did this change itself to decimal?
+    t.decimal "size_by_assets"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "elevatorcos", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.decimal "num_technicians"
+    t.boolean "offers_install?"
+    t.boolean "offers_service?"
+    t.boolean "offers_modernization?"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
