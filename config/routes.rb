@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get '/elevatorcos/:id', to: 'elevatorcos#show'
 
   #User Story 3
+  get '/buildings', to: 'buildings#index'
   get '/branches', to: 'branches#index'
+
 
 end

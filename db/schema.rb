@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_02_210313) do
+ActiveRecord::Schema.define(version: 2021_12_02_213907) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,20 @@ ActiveRecord::Schema.define(version: 2021_12_02_210313) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "buildings", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "owner"
+    t.string "unit_type"
+    t.decimal "num_units"
+    t.date "year_installed"
+    t.boolean "needs_modernization?"
+    t.date "last_serviced"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "elevatorco_id"
+    t.index ["elevatorco_id"], name: "index_buildings_on_elevatorco_id"
 
   create_table "branchs", force: :cascade do |t|
     t.string "name"
@@ -46,4 +60,5 @@ ActiveRecord::Schema.define(version: 2021_12_02_210313) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "buildings", "elevatorcos"
 end
