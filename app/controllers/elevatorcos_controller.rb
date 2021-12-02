@@ -6,4 +6,5 @@ class ElevatorcosController < ApplicationController
   def show
     @elevatorco = Elevatorco.find(params[:id])
   end
+
 end

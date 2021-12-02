@@ -10,4 +10,7 @@ Rails.application.routes.draw do
 
   #User Story 3
   get '/buildings', to: 'buildings#index'
+  get '/branches', to: 'branches#index'
+
+
 end
