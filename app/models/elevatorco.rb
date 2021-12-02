@@ -1,2 +1,3 @@
 class Elevatorco < ApplicationRecord
-end 
+  has_many :buildings 
+end
