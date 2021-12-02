@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_01_035724) do
+ActiveRecord::Schema.define(version: 2021_12_02_210313) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,16 @@ ActiveRecord::Schema.define(version: 2021_12_01_035724) do
     t.boolean "fdic_ins"
     t.boolean "mobile_app"
     t.decimal "size_by_assets"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "branchs", force: :cascade do |t|
+    t.string "name"
+    t.integer "zip_code"
+    t.boolean "has_atm"
+    t.decimal "quarterly_rev"
+    t.integer "bank_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
