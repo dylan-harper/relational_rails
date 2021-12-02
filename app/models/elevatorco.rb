@@ -1,0 +1,2 @@
+class Elevatorco < ApplicationRecord
+end 
