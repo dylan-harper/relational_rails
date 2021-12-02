@@ -7,4 +7,7 @@ Rails.application.routes.draw do
   #User Story 2
   get '/banks/:id', to: 'banks#show'
   get '/elevatorcos/:id', to: 'elevatorcos#show'
+
+  #User Story 3
+  get '/buildings', to: 'buildings#index'
 end
