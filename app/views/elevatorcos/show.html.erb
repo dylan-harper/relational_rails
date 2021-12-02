@@ -1,0 +1,11 @@
+<a href='/elevatorcos'>Back to Elevator Companies Main</a><br><br>
+<h1><%= @elevatorco.name %></h1>
+<p>
+  <%= @elevatorco.address %><br>
+<ul>
+  <li>Number of technicians: <%= @elevatorco.num_technicians %></li>
+  <li>Offers installation?: <%= @elevatorco.offers_install? %></li>
+  <li>Offers service?: <%= @elevatorco.offers_service? %></li>
+  <li>Offers modernization?: <%= @elevatorco.offers_modernization? %></li>
+</ul>
+</p>
