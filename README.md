@@ -4,7 +4,7 @@
 #### Rails Version: 5.2.6
 #### PostgreSQL Version: 1.2.3
 
-##### [DB Schema](https://sqlspy.io/import_db_designer/c3B5LTMxNTE0NDEtMjA5ODgwNjQ2M2IzMWExMC00Nzg1NTA=)
+##### [DB Schema](https://user-images.githubusercontent.com/88950699/144489005-3b7b2fc1-c88b-410f-ba11-71d7d1775afa.png)
 
 ![closed pull requests badge](https://img.shields.io/github/issues-pr-closed/dylan-harper/relational_rails?color=blue)
 ![pry v badge](https://img.shields.io/gem/v/pry?color=blue&label=pry)
