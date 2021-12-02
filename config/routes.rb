@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   get '/banks', to:'banks#index'
   #User Story 2
   get '/banks/:id', to: 'banks#show'
+  #User Story 3
+  get '/branches', to: 'branches#index'
 end
