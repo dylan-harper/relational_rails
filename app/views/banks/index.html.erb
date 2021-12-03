@@ -1,5 +1,5 @@
 <h1> Banks </h1>
 
 <% @banks.each do |bank| %>
-  <h3><%= bank.name %></h3>
+  <h3><%= bank.name %>, created at <%= bank.created_at %></h3>
 <% end %>
