@@ -16,4 +16,7 @@ Rails.application.routes.draw do
   get '/buildings/:id', to: 'buildings#show'
   get '/branches/:id', to: 'branches#show'
 
+  #User Story 5
+  get 'elevatorcos/:elevatorco_id/buildings', to: 'elevatorco_buildings#index'
+
 end
