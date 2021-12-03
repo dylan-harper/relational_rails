@@ -16,8 +16,10 @@ RSpec.describe 'the elevatorcos index page' do
                                      offers_modernization?: false)
 
     visit "/elevatorcos"
+    save_and_open_page
 
     expect(page).to have_content(elevatorco.name && elevatorco2.name)
+    expect(page).to have_content(elevatorco.created_at && elevatorco2.created_at)
   end
 
 end
