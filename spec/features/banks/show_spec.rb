@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'bank show' do
 
-  it 'displays the bank name for bank_1' do
+  it 'displays the attributes for bank_1' do
     bank = Bank.create!(name: 'Wells Fargo',
                           hq_city_state: 'San Francisco, California',
                           fdic_ins: true,
@@ -21,7 +21,7 @@ RSpec.describe 'bank show' do
     expect(page).to have_content(bank.updated_at)
   end
 
-  it 'displays the bank name for bank_2' do
+  it 'displays the attributes for bank_2' do
     bank = Bank.create!(name: 'Chase',
                           hq_city_state: 'New York City, New York',
                           fdic_ins: true,
