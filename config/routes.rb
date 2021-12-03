@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get '/branches', to: 'branches#index'
 
   #User Story 4
+  get '/buildings/:id', to: 'buildings#show'
   get '/branches/:id', to: 'branches#show'
 
 end
