@@ -1,0 +1,14 @@
+<a href="/buildings">Back to Buildings Main</a>
+<h1><%= @building.name %></h1>
+<p>
+  <%= @building.address %><br>
+  Property owner: <%= @building.owner %>
+  <ul>
+    <li>Unit type: <%= @building.unit_type %></li>
+    <li>Number of units: <%= @building.num_units %></li>
+    <li>Year installed: <%= @building.year_installed %></li>
+    <li>Needs modernization?: <%= @building.needs_modernization? %></li>
+    <li>Last service date: <%= @building.last_serviced %></li>
+    <li>Service contract holder: <%= @building.elevatorco.name %></li>
+  </ul>
+</p>
