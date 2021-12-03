@@ -25,6 +25,16 @@ ActiveRecord::Schema.define(version: 2021_12_02_213907) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "branchs", force: :cascade do |t|
+    t.string "name"
+    t.integer "zip_code"
+    t.boolean "has_atm"
+    t.decimal "quarterly_rev"
+    t.integer "bank_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "buildings", force: :cascade do |t|
     t.string "name"
     t.string "address"
@@ -38,15 +48,6 @@ ActiveRecord::Schema.define(version: 2021_12_02_213907) do
     t.datetime "updated_at", null: false
     t.bigint "elevatorco_id"
     t.index ["elevatorco_id"], name: "index_buildings_on_elevatorco_id"
-
-  create_table "branchs", force: :cascade do |t|
-    t.string "name"
-    t.integer "zip_code"
-    t.boolean "has_atm"
-    t.decimal "quarterly_rev"
-    t.integer "bank_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "elevatorcos", force: :cascade do |t|
