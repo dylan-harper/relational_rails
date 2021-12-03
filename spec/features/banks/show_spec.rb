@@ -40,4 +40,26 @@ RSpec.describe 'bank show' do
     expect(page).to have_content(bank.updated_at)
   end
 
+  before :each do
+    @bank_1 = Bank.create!(name: 'Wells Fargo',
+                          hq_city_state: 'San Francisco, California',
+                          fdic_ins: true,
+                          mobile_app: true,
+                          size_by_assets: 1303558000)
+    @bank_2 = Bank.create!(name: 'Chase',
+                          hq_city_state: 'New York City, New York',
+                          fdic_ins: true,
+                          mobile_app: true,
+                          size_by_assets: 3757576000)
+    @bank_3 = Bank.create!(name: 'BoA',
+                            hq_city_state: 'Charlotte, North Carolina',
+                            fdic_ins: true,
+                            mobile_app: true,
+                            size_by_assets: 3000000000)
+  end
+  it 'shows the count of children' do
+    visit "/banks/#{@bank_1.id}"
+
+    expect(page).to have_content('Number of Branches: 1')
+  end
 end
