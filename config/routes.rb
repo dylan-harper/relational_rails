@@ -14,6 +14,6 @@ Rails.application.routes.draw do
 
   #User Story 4
   get '/buildings/:id', to: 'buildings#show'
-
+  get '/branches/:id', to: 'branches#show'
 
 end

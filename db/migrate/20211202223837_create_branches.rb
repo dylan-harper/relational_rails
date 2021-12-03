@@ -1,6 +1,6 @@
-class CreateBranchs < ActiveRecord::Migration[5.2]
+class CreateBranches < ActiveRecord::Migration[5.2]
   def change
-    create_table :branchs do |t|
+    create_table :branches do |t|
       t.string :name
       t.integer :zip_code
       t.boolean :has_atm
