@@ -1,5 +1,5 @@
 require 'rails_helper'
 
-Rspec.describe Bank, type: :model do
-  
+RSpec.describe Bank, type: :model do
+  it {should have_many :branches}
 end
