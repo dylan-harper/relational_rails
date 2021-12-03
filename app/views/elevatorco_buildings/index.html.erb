@@ -1,0 +1,8 @@
+<a href="/elevatorcos/<%= @elevatorco.id %>">Back To <%= @elevatorco.name %></a>
+<br><br>
+<h3><%= @elevatorco.name %> Service Contracts</h3>
+<p>
+<% @buildings.each do |building| %>
+<%= link_to building.name, "/buildings/#{building.id}" %><br>
+<% end %>
+</p>
