@@ -72,4 +72,12 @@ RSpec.describe 'bank show' do
     expect(page).to have_content('Number of Branches: 1')
     expect(page).to have_content(@bank_1.branches_count)
   end
+
+  it 'has a link to the branches index' do
+    visit "/banks"
+
+    click_on "Branches Main"
+
+    expect(current_path).to eq("/branches")
+  end
 end

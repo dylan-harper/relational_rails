@@ -1,3 +1,4 @@
+<p><%= link_to "Branches Main", "/branches" %></p>
 
 <% @branches.each do |branch| %>
   <p><%= link_to branch.name, "/branches/#{branch.id}" %></p>
