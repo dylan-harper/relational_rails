@@ -35,5 +35,13 @@ RSpec.describe 'Banks branches index' do
     expect(current_path).to eq("/branches/#{@branch_1.id}")
   end
 
+  it 'has a link to the branches index' do
+    visit "/banks/#{@bank_1.id}/branches"
+    
+    click_on "Branches Main"
+
+    expect(current_path).to eq("/branches")
+  end
+
 
 end

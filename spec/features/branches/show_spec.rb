@@ -46,4 +46,22 @@ RSpec.describe 'branch show' do
     expect(page).to have_content(@branch_2.updated_at)
   end
 
+  it 'has a link to the branches index' do
+    @bank_1 = Bank.create!(name: 'Wells Fargo',
+                          hq_city_state: 'San Francisco, California',
+                          fdic_ins: true,
+                          mobile_app: true,
+                          size_by_assets: 1303558000)
+    @branch_1 = @bank_1.branches.create!(name: "Branch",
+                            zip_code: 123456,
+                            has_atm: true,
+                            quarterly_rev: 1000000)
+                            
+    visit "/branches/#{@branch_1.id}"
+
+    click_on "Branches Main"
+
+    expect(current_path).to eq("/branches")
+  end
+
 end

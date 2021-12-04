@@ -34,4 +34,12 @@ RSpec.describe 'bank index' do
     expect(page).to have_content(@bank_3.created_at)
   end
 
+  it 'has a link to the branches index' do
+    visit "/banks"
+
+    click_on "Branches Main"
+
+    expect(current_path).to eq("/branches")
+  end
+
 end

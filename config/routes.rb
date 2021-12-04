@@ -19,4 +19,5 @@ Rails.application.routes.draw do
   #User Story 5
   get '/banks/:bank_id/branches', to: 'bank_branches#index'
   get 'elevatorcos/:elevatorco_id/buildings', to: 'elevatorco_buildings#index'
+
 end
