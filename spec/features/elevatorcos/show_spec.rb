@@ -82,4 +82,10 @@ RSpec.describe 'the elevatorcos show page' do
     expect(current_path).to eq('/elevatorcos')
   end
 
+  it 'links to elevatorco buildings page' do
+    click_link("Buildings Under Service Contract")
+    save_and_open_page
+    expect(current_path).to eq("/elevatorcos/#{@elevatorco.id}/buildings")
+  end
+
 end
