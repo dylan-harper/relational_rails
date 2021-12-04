@@ -19,28 +19,28 @@ RSpec.describe 'the elevatorcos show page' do
                                 owner: 'Zed Colada',
                                 unit_type: 'passenger',
                                 num_units: 8,
-                                year_installed: 20180101,
+                                year_installed: '2018-01-01',
                                 needs_modernization?: false,
-                                last_serviced: 20211016,
+                                last_serviced: '2021-10-16',
                                 elevatorco_id: @elevatorco.id)
     @building2 = Building.create!(name: 'Toothpick Factory',
                                  address: '46112 Point View',
                                  owner: 'Salvador Datun',
                                  unit_type: 'freight',
-                                 num_units: 1,
-                                 year_installed: 19960101,
+                                 num_units: '1',
+                                 year_installed: '1996-01-01',
                                  needs_modernization?: true,
-                                 last_serviced: 20211016,
+                                 last_serviced: '2021-10-16',
                                  elevatorco_id: @elevatorco2.id)
     @building3 = Building.create!(name: 'Native Roots',
-                                 address: '408 Broadway',
-                                 owner: 'Phil Big',
-                                 unit_type: 'vertical platform lift',
-                                 num_units: 1,
-                                 year_installed: 20140101,
-                                 needs_modernization?: false,
-                                 last_serviced: 20210702,
-                                 elevatorco_id: @elevatorco2.id)
+                                address: '408 Broadway',
+                                owner: 'Phil Big',
+                                unit_type: 'vertical platform lift',
+                                num_units: 1,
+                                year_installed: '2014-01-01',
+                                needs_modernization?: false,
+                                last_serviced: '2021-07-02',
+                                elevatorco_id: @elevatorco2.id)
 
   visit "/elevatorcos/#{@elevatorco.id}"
   end
@@ -67,8 +67,13 @@ RSpec.describe 'the elevatorcos show page' do
   end
 
   it 'displays num buildings' do
-    save_and_open_page
     expect(page).to have_content("Number of service contracts: #{@elevatorco.buildings.count}")
+  end
+
+  it 'links to buildings main page' do
+    click_link("Buildings Main")
+
+    expect(current_path).to eq('/buildings')
   end
 
 end
