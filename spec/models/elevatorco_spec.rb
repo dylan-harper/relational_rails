@@ -35,6 +35,15 @@ RSpec.describe Elevatorco, type: :model do
                                    needs_modernization?: true,
                                    last_serviced: 20211016,
                                    elevatorco_id: @elevatorco2.id)
+      @building3 = Building.create!(name: 'Native Roots',
+                                   address: '408 Broadway',
+                                   owner: 'Phil Big',
+                                   unit_type: 'vertical platform lift',
+                                   num_units: 1,
+                                   year_installed: 20140101,
+                                   needs_modernization?: false,
+                                   last_serviced: 20210702,
+                                   elevatorco_id: @elevatorco2.id)
     end
     describe '#sort_by_created' do
       it 'sorts elevatorco by created_at' do
@@ -42,6 +51,13 @@ RSpec.describe Elevatorco, type: :model do
         expect(@elevatorco.sort_by_created.last).to eq(@elevatorco2)
       end
     end
+
+    describe '#count_of_buildings' do
+      it 'returns number of buildings for an elevatorco' do
+        expect(@elevatorco.count_of_buildings).to eq(1)
+        expect(@elevatorco2.count_of_buildings).to eq(2)
+      end
+    end 
 
   end
 end
