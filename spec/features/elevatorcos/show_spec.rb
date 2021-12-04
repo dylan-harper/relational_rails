@@ -76,4 +76,10 @@ RSpec.describe 'the elevatorcos show page' do
     expect(current_path).to eq('/buildings')
   end
 
+  it 'links to elevatorcos main page' do
+    click_link("Elevator Companies Main")
+
+    expect(current_path).to eq('/elevatorcos')
+  end
+
 end

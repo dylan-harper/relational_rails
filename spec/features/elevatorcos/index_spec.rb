@@ -57,5 +57,4 @@ RSpec.describe 'the elevatorcos index page' do
 
     expect(current_path).to eq('/buildings')
   end
-
 end
