@@ -45,6 +45,12 @@ RSpec.describe 'the building index page' do
   end
 
   it 'displays all buildings' do
-    expect(page).to have_content(building.name && building2.name)
+    expect(page).to have_content(@building.name && @building2.name)
+  end
+
+  it 'links to elevatorcos main page' do
+    click_link("Elevator Companies Main")
+
+    expect(current_path).to eq('/elevatorcos')
   end
 end
