@@ -3,5 +3,5 @@
 <h1> Banks </h1> <p><%= link_to "New Bank", "/banks/new" %></p>
 
 <% @banks.each do |bank| %>
-  <h3><%= bank.name %>, created at <%= bank.created_at %></h3>
+  <h3><%= bank.name %>, created at <%= bank.created_at %> <%= button_to "Edit #{bank.name}", "/banks/#{bank.id}/edit", method: :get %></h3>
 <% end %>

@@ -20,4 +20,14 @@ class BanksController < ApplicationController
     params.permit(:name, :hq_city_state, :fdic_ins, :mobile_app, :size_by_assets)
   end
 
+  def edit
+    @bank = Bank.find(params[:id])
+  end
+
+  def update
+    bank = Bank.find(params[:id])
+    bank.update(bank_params)
+    redirect_to '/banks'
+  end
+
 end
