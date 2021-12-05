@@ -5,10 +5,12 @@ Rails.application.routes.draw do
   get '/banks', to:'banks#index'
 
   get '/banks/new', to: 'banks#new'
+
   post '/banks', to:'banks#create'
   #User Story 2
   get '/banks/:id', to: 'banks#show'
-
+  get '/banks/:id/edit', to: 'banks#edit'
+  patch '/banks/:id', to: 'banks#update'
   #User Story 11
   get '/elevatorcos/new', to: 'elevatorcos#new'
   post '/elevatorcos', to: 'elevatorcos#create'
