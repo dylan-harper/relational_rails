@@ -1,0 +1,16 @@
+<%= form_with url: "/banks/#{@bank.id}/branches", method: :post, local: true do |form| %>
+
+<%= form.label :name %>
+<%= form.text_field :name %>
+<br>
+<%= form.label :zip_code %>
+<%= form.text_field :zip_code %>
+<br>
+<%= form.label :has_atm %>
+<%= form.text_field :has_atm %>
+<br>
+<%= form.label :quarterly_rev %>
+<%= form.text_field :quarterly_rev %>
+<br>
+<%= form.submit "Create Branch" %>
+<% end %>

@@ -5,8 +5,9 @@ Rails.application.routes.draw do
   get '/banks', to:'banks#index'
 
   get '/banks/new', to: 'banks#new'
-
-  post '/banks', to:'banks#create'
+  get '/banks/:id/branches/new', to: 'bank_branches#new'
+  post '/banks/:id/branches', to: 'bank_branches#create'
+  post '/banks', to: 'banks#create'
   #User Story 2
   get '/banks/:id', to: 'banks#show'
   get '/banks/:id/edit', to: 'banks#edit'
