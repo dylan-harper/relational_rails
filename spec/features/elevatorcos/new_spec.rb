@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'the elevatorcos index page' do
+RSpec.describe 'the elevatorcos new page' do
   before(:each) do
     @elevatorco = Elevatorco.create!(name: 'Vertical Transport',
                                     address: '5624 Elevation Dr.',
@@ -41,26 +41,20 @@ RSpec.describe 'the elevatorcos index page' do
                                 needs_modernization?: false,
                                 last_serviced: '2021-07-02',
                                 elevatorco_id: @elevatorco2.id)
-    visit "/elevatorcos"
   end
 
-  it 'displays all elevatorcos names' do
-    expect(page).to have_content(@elevatorco.name && @elevatorco2.name)
-  end
-
-  it 'displays all elevatorcos created_at' do
-    expect(page).to have_content(@elevatorco.created_at && @elevatorco2.created_at)
-  end
-
-  it 'links to buildings main page' do
-    click_link("Buildings Main")
-
-    expect(current_path).to eq('/buildings')
-  end
-
-  it 'links to elevatorco create form' do
-    click_link("New Elevator Company")
-
-    expect(current_path).to eq('/elevatorcos/new')
+  it 'can create a new elevator company' do
+    visit '/elevatorcos/new'
+    save_and_open_page
+    fill_in('name', with: 'Sky Bros')
+    fill_in('address', with: '7439 Upper Limit')
+    fill_in('num_technicians', with: 7)
+    fill_in('offers_install', with: true)
+    fill_in('offers_service', with: true)
+    fill_in('offers_modernization', with: true)
+    click_button('Add Elevator Company')
+    new_elevatorco_id = Elevatorco.last.id
+    expect(current_path).to eq("/elevatorcos/#{new_elevatorco_id}")
+    expect(page).to have_content('Sky Bros')
   end
 end
