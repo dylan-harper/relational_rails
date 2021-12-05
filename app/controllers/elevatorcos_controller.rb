@@ -8,11 +8,21 @@ class ElevatorcosController < ApplicationController
   end
 
   def new
-  end 
+  end
 
   def create
     new = Elevatorco.create(elevatorco_params)
     redirect_to "/elevatorcos/#{new.id}"
+  end
+
+  def edit
+    @elevatorco = Elevatorco.find(params[:id])
+  end
+
+  def update
+    @elevatorco = Elevatorco.find(params[:id])
+    @elevatorco.update(elevatorco_params)
+    redirect_to "/elevatorcos/#{@elevatorco.id}"
   end
 
 private
