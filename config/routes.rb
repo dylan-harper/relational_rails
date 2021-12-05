@@ -13,6 +13,10 @@ Rails.application.routes.draw do
   get '/elevatorcos/new', to: 'elevatorcos#new'
   post '/elevatorcos', to: 'elevatorcos#create'
 
+  #User Story 12
+  get '/elevatorcos/:id/edit', to: 'elevatorcos#edit'
+  patch '/elevatorcos/:id/', to: 'elevatorcos#update'
+
   #User Story 3
   get '/buildings', to: 'buildings#index'
   get '/branches', to: 'branches#index'

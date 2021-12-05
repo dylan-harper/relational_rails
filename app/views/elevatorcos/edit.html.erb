@@ -1,0 +1,15 @@
+<%= form_with url: "/elevatorcos/#{@elevatorco.id}", method: :patch, local: true do |form| %>
+  <%= form.label "Name:" %><br>
+  <%= form.text_field :name %><br>
+  <%= form.label "Address:" %><br>
+  <%= form.text_field :address %><br>
+  <%= form.label "Number of Technicians:" %><br>
+  <%= form.text_field :num_technicians %><br>
+  <%= form.label "Offers Installation?:" %><br>
+  <%= form.text_field :offers_install? %><br>
+  <%= form.label "Offers Service?:" %><br>
+  <%= form.text_field :offers_service? %><br>
+  <%= form.label "Offers Modernization?:" %><br>
+  <%= form.text_field :offers_modernization? %><br><br>
+  <%= form.submit "Save" %>
+<% end %>

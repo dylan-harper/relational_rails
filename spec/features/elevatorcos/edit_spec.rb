@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'the elevatorcos show page' do
+RSpec.describe 'elevatorcos edit' do
   before(:each) do
     @elevatorco = Elevatorco.create!(name: 'Vertical Transport',
                                     address: '5624 Elevation Dr.',
@@ -42,56 +42,27 @@ RSpec.describe 'the elevatorcos show page' do
                                 last_serviced: '2021-07-02',
                                 elevatorco_id: @elevatorco2.id)
 
-  visit "/elevatorcos/#{@elevatorco.id}"
   end
 
-  it 'displays elevatorcos name' do
-    expect(page).to have_content(@elevatorco.name)
-    expect(page).to_not have_content(@elevatorco2.name)
+  it 'can edit the company info' do
+    @elevatorco3 = Elevatorco.create!(name: 'Sky Bros',
+                                      address: '7439 Upper Limit',
+                                      num_technicians: 7,
+                                      offers_install?: true,
+                                      offers_service?: true,
+                                      offers_modernization?: true)
+    visit "/elevatorcos/#{@elevatorco3.id}/edit"
+    
+    fill_in 'name', with: 'Sky Brothers'
+    fill_in 'address', with: '7439 Upper Limit'
+    fill_in 'num_technicians', with: 9
+    fill_in 'offers_install', with: true
+    fill_in 'offers_service', with: true
+    fill_in 'offers_modernization', with: true
+    click_button("Save")
+
+    expect(current_path).to eq("/elevatorcos/#{@elevatorco3.id}")
+    expect(page).to have_content('Sky Brothers')
+    expect(page).to_not have_content('Sky Bros')
   end
-
-  it 'displays elevatorcos address' do
-    expect(page).to have_content(@elevatorco.address)
-    expect(page).to_not have_content(@elevatorco2.address)
-  end
-
-  it 'displays elevatorcos num_technicians' do
-    expect(page).to have_content(@elevatorco.num_technicians)
-    expect(page).to_not have_content(@elevatorco2.num_technicians)
-  end
-
-  it 'displays elevatorcos offers?' do
-    expect(page).to have_content(@elevatorco.offers_install?)
-    expect(page).to have_content(@elevatorco.offers_service?)
-    expect(page).to have_content(@elevatorco.offers_modernization?)
-  end
-
-  it 'displays num buildings' do
-    expect(page).to have_content("Number of service contracts: #{@elevatorco.buildings.count}")
-  end
-
-  it 'links to buildings main page' do
-    click_link("Buildings Main")
-
-    expect(current_path).to eq('/buildings')
-  end
-
-  it 'links to elevatorcos main page' do
-    click_link("Elevator Companies Main")
-
-    expect(current_path).to eq('/elevatorcos')
-  end
-
-  it 'links to elevatorco buildings page' do
-    click_link("Buildings Under Service Contract")
-
-    expect(current_path).to eq("/elevatorcos/#{@elevatorco.id}/buildings")
-  end
-
-  it 'links to elevator co update page' do
-    click_link("Update Company Info")
-
-    expect(current_path).to eq("/elevatorcos/#{@elevatorco.id}/edit")
-  end
-
 end
