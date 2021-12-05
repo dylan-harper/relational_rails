@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get '/elevatorcos', to: 'elevatorcos#index'
   get '/banks', to:'banks#index'
 
+  get '/banks/new', to: 'banks#new'
+  post '/banks', to:'banks#create'
   #User Story 2
   get '/banks/:id', to: 'banks#show'
   get '/elevatorcos/:id', to: 'elevatorcos#show'
@@ -20,4 +22,6 @@ Rails.application.routes.draw do
   get '/banks/:bank_id/branches', to: 'bank_branches#index'
   get 'elevatorcos/:elevatorco_id/buildings', to: 'elevatorco_buildings#index'
 
+  #User Story 11
+  # get '/banks/new', to: 'banks#new'
 end
