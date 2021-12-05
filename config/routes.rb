@@ -13,7 +13,6 @@ Rails.application.routes.draw do
   get '/banks/:id', to: 'banks#show'
   get '/banks/:id/edit', to: 'banks#edit'
   patch '/banks/:id', to: 'banks#update'
-
   #User Story 11
   get '/elevatorcos/new', to: 'elevatorcos#new'
   post '/elevatorcos', to: 'elevatorcos#create'
