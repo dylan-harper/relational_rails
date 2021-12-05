@@ -1,0 +1,19 @@
+<%= form_with url: '/banks', method: :post, local: true do |form| %>
+
+<%= form.label :name %>
+<%= form.text_field :name %>
+<br>
+<%= form.label :hq_city_state %>
+<%= form.text_field :hq_city_state %>
+<br>
+<%= form.label :fdic_ins %>
+<%= form.text_field :fdic_ins %>
+<br>
+<%= form.label :mobile_app %>
+<%= form.text_field :mobile_app %>
+<br>
+<%= form.label :size_by_assets %>
+<%= form.text_field :size_by_assets %>
+<br>
+<%= form.submit "Create Bank" %>
+<% end %>

@@ -92,7 +92,7 @@ RSpec.describe 'bank show' do
   it 'has a link to all children' do
     visit "/banks/#{@bank_1.id}"
 
-    click_on "see all"
+    click_on "(see all)"
 
     expect(current_path).to eq("/banks/#{@bank_1.id}/branches")
   end
