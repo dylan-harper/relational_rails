@@ -12,12 +12,12 @@ class BanksController < ApplicationController
   end
 
   def create
-    bank = Bank.create(name: params[:name],
-                       hq_city_state: params[:hq_city_state],
-                       fdic_ins: params[:fdic_ins],
-                       mobile_app: params[:mobile_app],
-                       size_by_assets: params[:size_by_assets])
+    bank = Bank.create(bank_params)
     redirect_to "/banks"
+  end
+
+  def bank_params
+    params.permit(:name, :hq_city_state, :fdic_ins, :mobile_app, :size_by_assets)
   end
 
 end
