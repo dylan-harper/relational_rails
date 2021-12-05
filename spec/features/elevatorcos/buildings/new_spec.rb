@@ -41,24 +41,23 @@ RSpec.describe 'Elevatorcos Buildings Index' do
                                 needs_modernization?: false,
                                 last_serviced: '2021-07-02',
                                 elevatorco_id: @elevatorco2.id)
-    visit "/elevatorcos/#{@elevatorco2.id}/buildings"
   end
 
-  it 'shows all building names for the elevatorco' do
-    expect(page).to have_content(@building2.name)
-    expect(page).to have_content(@building3.name)
-  end
+  it 'can create new elevatorcos building' do
+    visit "/elevatorcos/#{@elevatorco.id}/buildings/new"
 
-  it 'links to buildings main page' do
-    click_link("Buildings Main")
+    fill_in('name', with: 'Westworld Mall')
+    fill_in('address', with: '624 West Highway 72')
+    fill_in('owner', with: 'Hugh North Jr.')
+    fill_in('unit_type', with: 'LULA')
+    fill_in('num_units', with: 4)
+    fill_in('year_installed', with: '2008-01-01')
+    fill_in('needs_modernization', with: true)
+    fill_in('last_serviced', with: '2021-02-06')
+    click_button("Create Building")
 
-    expect(current_path).to eq('/buildings')
-  end
-
-  it 'links to add new building' do
-    click_link("Add New Service Contract")
-
-    expect(current_path).to eq("/elevatorcos/#{@elevatorco2.id}/buildings/new")
+    expect(current_path).to eq("/elevatorcos/#{@elevatorco.id}/buildings")
+    expect(page).to have_content('Westworld Mall')
   end
 
 end
