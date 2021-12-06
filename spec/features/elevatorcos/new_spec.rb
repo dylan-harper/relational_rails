@@ -45,7 +45,7 @@ RSpec.describe 'the elevatorcos new page' do
 
   it 'can create a new elevator company' do
     visit '/elevatorcos/new'
-    save_and_open_page
+  
     fill_in('name', with: 'Sky Bros')
     fill_in('address', with: '7439 Upper Limit')
     fill_in('num_technicians', with: 7)

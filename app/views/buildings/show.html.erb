@@ -11,5 +11,6 @@
     <li>Needs modernization?: <%= @building.needs_modernization? %></li>
     <li>Last service date: <%= @building.last_serviced %></li>
     <li>Service contract holder: <%= @building.elevatorco.name %></li>
-  </ul>
+  </ul><br>
+    <%= link_to "Update Building Info", "/buildings/#{@building.id}/edit", method: :get %>
 </p>
