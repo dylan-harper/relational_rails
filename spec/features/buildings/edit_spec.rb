@@ -41,7 +41,6 @@ RSpec.describe 'the buildings show page' do
                                 needs_modernization?: false,
                                 last_serviced: '2021-07-02',
                                 elevatorco_id: @elevatorco2.id)
-    visit "/buildings/#{@building.id}/edit"
   end
 
   it 'can edit building info' do
@@ -54,6 +53,7 @@ RSpec.describe 'the buildings show page' do
                                   needs_modernization?: true,
                                   last_serviced: '2021-02-06',
                                   elevatorco_id: @elevatorco.id)
+    visit "/buildings/#{@building4.id}"
     click_link('Update Building Info')
 
     fill_in('name', with: 'Westworld Mall')
@@ -64,10 +64,10 @@ RSpec.describe 'the buildings show page' do
     fill_in('year_installed', with: '2008-01-01')
     fill_in('needs_modernization', with: true)
     fill_in('last_serviced', with: '2021-02-06')
-    click_button("Update Building Info")
+    click_button("Update")
 
     expect(current_path).to eq("/buildings/#{@building4.id}")
     expect(page).to have_content('Westworld Mall')
     expect(page).to_not have_content('Westward Mall')
   end
-end  
+end
