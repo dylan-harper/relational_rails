@@ -7,5 +7,5 @@
 <% @buildings.each do |building| %>
 <%= link_to building.name, "/buildings/#{building.id}" %><br>
 <% end %><br>
-<%= link_to "Add New Service Contract", ""/elevatorcos/#{@elevatorco.id}/buildings/new" %>
+<%= link_to "Add New Service Contract", "/elevatorcos/#{@elevatorco.id}/buildings/new" %>
 </p>

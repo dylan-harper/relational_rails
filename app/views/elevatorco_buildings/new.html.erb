@@ -1,4 +1,4 @@
-<%= form_with url: "/buildings", method: :post, local: true do |form| %>
+<%= form_with url: "/elevatorcos/#{@elevatorco.id}/buildings/", method: :post, local: true do |form| %>
   <%= form.label "Name:" %><br>
   <%= form.text_field :name %><br>
   <%= form.label "Address:" %><br>

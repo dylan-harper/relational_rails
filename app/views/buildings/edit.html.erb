@@ -1,4 +1,19 @@
-<%= form_with , method: :patch, local: true do |form| %>
-  <%= %>
-  <%= form.submit 'Update Building Info' %> 
+<%= form_with url: "/buildings/#{@building.id}/", method: :patch, local: true do |form| %>
+  <%= form.label "Name:" %><br>
+  <%= form.text_field :name %><br>
+  <%= form.label "Address:" %><br>
+  <%= form.text_field :address %><br>
+  <%= form.label "Owner:"%><br>
+  <%= form.text_field :owner %><br>
+  <%= form.label "Equipment type:"%><br>
+  <%= form.text_field :unit_type %><br>
+  <%= form.label "Number of units:"%><br>
+  <%= form.text_field :num_units %><br>
+  <%= form.label "Year Installed:"%><br>
+  <%= form.text_field :year_installed %><br>
+  <%= form.label "Needs modernization?:"%><br>
+  <%= form.text_field :needs_modernization? %><br>
+  <%= form.label "Last service date:"%><br>
+  <%= form.text_field :last_serviced %><br>
+  <%= form.submit "Update" %>
 <% end %>
