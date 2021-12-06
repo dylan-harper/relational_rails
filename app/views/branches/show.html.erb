@@ -1,7 +1,8 @@
 <p><%= link_to "Banks Main", "/banks" %> <%= link_to "Branches Main", "/branches" %></p>
 
-<h1><%= @branch.name %></h1>
+<h1><%= @branch.name %></h1><p><%= button_to "Edit #{@branch.name}", "/branches/#{@branch.id}/edit", method: :get %></p>
 <h3>ID: <%= @branch.id %></h3>
+
 
 <p>Name: <%= @branch.name %></p>
 <p>Zip Code: <%= @branch.zip_code %></p>

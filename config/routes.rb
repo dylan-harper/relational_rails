@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/banks', to:'banks#index'
 
   get '/banks/new', to: 'banks#new'
+  get '/branches/:id/edit', to: 'branches#edit'
   get '/banks/:id/branches/new', to: 'bank_branches#new'
   post '/banks/:id/branches', to: 'bank_branches#create'
   post '/banks', to: 'banks#create'
@@ -12,6 +13,7 @@ Rails.application.routes.draw do
   get '/banks/:id', to: 'banks#show'
   get '/banks/:id/edit', to: 'banks#edit'
   patch '/banks/:id', to: 'banks#update'
+  patch '/branches/:id', to: 'branches#update'
   #User Story 11
   get '/elevatorcos/new', to: 'elevatorcos#new'
   post '/elevatorcos', to: 'elevatorcos#create'
