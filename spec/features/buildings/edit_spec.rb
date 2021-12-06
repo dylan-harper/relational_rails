@@ -41,54 +41,33 @@ RSpec.describe 'the buildings show page' do
                                 needs_modernization?: false,
                                 last_serviced: '2021-07-02',
                                 elevatorco_id: @elevatorco2.id)
-    visit "/buildings/#{@building.id}"
-  end
-  it 'displays buildings name' do
-    expect(page).to have_content(@building.name)
-    expect(page).to_not have_content(@building2.name)
-  end
-  it 'displays buildings address' do
-    expect(page).to have_content(@building.address)
-    expect(page).to_not have_content(@building2.address)
-  end
-  it 'displays buildings owner' do
-    expect(page).to have_content(@building.owner)
-  end
-  it 'dispays buildings unit type' do
-    expect(page).to have_content(@building.unit_type)
-  end
-  it 'displays buildings num_units' do
-    expect(page).to have_content(@building.num_units)
-  end
-  it 'displays buildings year_installed' do
-    expect(page).to have_content(@building.year_installed.strftime("%F"))
-  end
-  it 'displays buildings needs_modernization?' do
-    expect(page).to have_content(@building.needs_modernization?)
-  end
-  it 'displays buildings last_serviced' do
-    expect(page).to have_content(@building.last_serviced.strftime("%F"))
-  end
-  it 'displays buildings elevatorco name' do
-    expect(page).to have_content(@elevatorco.name)
+    visit "/buildings/#{@building.id}/edit"
   end
 
-  it 'links to buildings main page' do
-    click_link("Back to Buildings Main")
+  it 'can edit building info' do
+    @building4 = Building.create!(name: 'Westward Mall',
+                                  address: '624 West Highway 72',
+                                  owner: 'Hugh North Jr.',
+                                  unit_type: 'LULA',
+                                  num_units: 4,
+                                  year_installed: '2008-01-01',
+                                  needs_modernization?: true,
+                                  last_serviced: '2021-02-06',
+                                  elevatorco_id: @elevatorco.id)
+    click_link('Update Building Info')
 
-    expect(current_path).to eq('/buildings')
+    fill_in('name', with: 'Westworld Mall')
+    fill_in('address', with: '624 West Highway 72')
+    fill_in('owner', with: 'Hugh North Jr.')
+    fill_in('unit_type', with: 'LULA')
+    fill_in('num_units', with: 4)
+    fill_in('year_installed', with: '2008-01-01')
+    fill_in('needs_modernization', with: true)
+    fill_in('last_serviced', with: '2021-02-06')
+    click_button("Update Building Info")
+
+    expect(current_path).to eq("/buildings/#{@building4.id}")
+    expect(page).to have_content('Westworld Mall')
+    expect(page).to_not have_content('Westward Mall')
   end
-
-  it 'links to elevatorcos main page' do
-    click_link("Elevator Companies Main")
-
-    expect(current_path).to eq('/elevatorcos')
-  end
-
-  it 'links to edit form' do
-    click_link("Update Building Info")
-
-    expect(current_path).to eq("/buildings/#{@building.id}/edit") 
-  end
-
-end
+end  
