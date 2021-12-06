@@ -49,11 +49,20 @@ RSpec.describe Building do
     describe '#display_true' do
       it 'displays records where needs_modernization: true' do
         true_buildings = Building.display_true
-        
+
         expect(true_buildings).to include(@building2)
         expect(true_buildings).to_not include(@building3)
         expect(true_buildings).to_not include(@building)
       end
     end
+
+    describe '#sort_by_name' do
+      it 'displays records in alphabetical order' do
+        sorted = Building.sort_by_name
+
+        expect(sorted.first).to eq(@building3)
+        expect(sorted.last).to eq(@building)
+      end
+    end 
   end
 end
