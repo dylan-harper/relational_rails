@@ -4,4 +4,5 @@ class Bank < ApplicationRecord
   def branches_count
     self.branches.count
   end
+
 end
