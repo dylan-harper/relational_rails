@@ -1,6 +1,7 @@
 <p><%= link_to "Banks Main", "/banks" %> <%= link_to "Branches Main", "/branches" %></p>
 
 <p><%= link_to 'New Branch', "/banks/#{@bank.id}/branches/new" %></p>
+<p><%= link_to 'Alphabetize Branches', "/banks/#{@bank.id}/branches?alphabetize=true" %></p>
 
 <% @branches.each do |branch| %>
   <p><%= link_to branch.name, "/branches/#{branch.id}" %></p>
