@@ -1,7 +1,11 @@
 class ElevatorcoBuildingsController < ApplicationController
   def index
     @elevatorco = Elevatorco.find(params[:id])
-    @buildings = @elevatorco.buildings
+    if params[:sort] == "alpha"
+      @buildings = @elevatorco.buildings.sort_by_name
+    else
+      @buildings = @elevatorco.buildings
+    end
   end
 
   def new
@@ -12,6 +16,10 @@ class ElevatorcoBuildingsController < ApplicationController
     @elevatorco = Elevatorco.find(params[:id])
     @building = @elevatorco.buildings.create(building_params)
     redirect_to "/elevatorcos/#{@elevatorco.id}/buildings"
+  end
+
+  def alphabetical
+    @buildings = Building.sort_by_name
   end
 
 private
