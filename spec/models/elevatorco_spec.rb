@@ -47,8 +47,10 @@ RSpec.describe Elevatorco, type: :model do
     end
     describe '#sort_by_created' do
       it 'sorts elevatorco by created_at' do
-        expect(@elevatorco.sort_by_created.first).to eq(@elevatorco)
-        expect(@elevatorco.sort_by_created.last).to eq(@elevatorco2)
+        @elevatorcos_sorted = Elevatorco.sort_by_created
+
+        expect(@elevatorcos_sorted.first).to eq(@elevatorco)
+        expect(@elevatorcos_sorted.last).to eq(@elevatorco2)
       end
     end
 
@@ -57,7 +59,7 @@ RSpec.describe Elevatorco, type: :model do
         expect(@elevatorco.count_of_buildings).to eq(1)
         expect(@elevatorco2.count_of_buildings).to eq(2)
       end
-    end 
+    end
 
   end
 end
