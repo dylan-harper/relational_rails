@@ -53,4 +53,9 @@ RSpec.describe 'the building index page' do
 
     expect(current_path).to eq('/elevatorcos')
   end
+
+  # it 'only displays buildings with needs_modernization?: true' do
+  #   expect(page).to have_content(@building2.name)
+  #   expect(page).to_not have_content(@building.name)
+  # end 
 end
