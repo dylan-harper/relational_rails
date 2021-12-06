@@ -84,5 +84,11 @@ RSpec.describe 'the buildings show page' do
 
     expect(current_path).to eq('/elevatorcos')
   end
-  
+
+  it 'links to edit form' do
+    click_link("Update Building Info")
+
+    expect(current_path).to eq("/buildings/#{@building.id}/edit") 
+  end
+
 end
