@@ -39,9 +39,6 @@ Rails.application.routes.draw do
   get '/banks/:bank_id/branches', to: 'bank_branches#index'
   get 'elevatorcos/:id/buildings', to: 'elevatorco_buildings#index'
 
-  #Parent Child Sort
-  get 'elevatorcos/:id/buildings/:sort', to: 'elevatorco_buildings#index'
-
   #Parent Child Show
   get '/buildings/:id', to: 'buildings#show'
   get '/branches/:id', to: 'branches#show'
