@@ -1,6 +1,6 @@
 class ElevatorcosController < ApplicationController
   def index
-    @elevatorcos = Elevatorco.all
+    @elevatorcos = Elevatorco.sort_by_created
   end
 
   def show

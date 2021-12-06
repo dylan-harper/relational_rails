@@ -1,6 +1,6 @@
 class BuildingsController < ApplicationController
   def index
-    @buildings = Building.all
+    @buildings = Building.display_true
   end
 
   def show

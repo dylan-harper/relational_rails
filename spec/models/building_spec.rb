@@ -47,10 +47,12 @@ RSpec.describe Building do
     end
 
     describe '#display_true' do
-      xit 'displays records where needs_modernization: true' do
-        expect(@building.display_true).to eq(@building2.name)
-        expect(@building.display_true).to_not eq(@building3.name)
-        expect(@building.display_true).to_not eq(@building.name)
+      it 'displays records where needs_modernization: true' do
+        true_buildings = Building.display_true
+        
+        expect(true_buildings).to include(@building2)
+        expect(true_buildings).to_not include(@building3)
+        expect(true_buildings).to_not include(@building)
       end
     end
   end
