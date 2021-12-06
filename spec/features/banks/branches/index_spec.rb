@@ -11,7 +11,7 @@ RSpec.describe 'Banks branches index' do
                             zip_code: 123456,
                             has_atm: true,
                             quarterly_rev: 1000000)
-    @branch_2 = @bank_1.branches.create!(name: "Other Branch",
+    @branch_2 = @bank_1.branches.create!(name: "Another Branch",
                             zip_code: 654321,
                             has_atm: false,
                             quarterly_rev: 2000000)
@@ -49,6 +49,14 @@ RSpec.describe 'Banks branches index' do
     click_on "Banks Main"
 
     expect(current_path).to eq("/banks")
+  end
+
+  it 'has a link that alphabetizes parent child index page' do
+    visit "/banks/#{@bank_1.id}/branches"
+
+    click_on "Alphabetize Branches"
+
+    expect(current_path).to eq("/banks/#{@bank_1.id}/branches")
   end
 
 end

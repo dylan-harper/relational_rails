@@ -1,8 +1,13 @@
 class BankBranchesController < ApplicationController
 
   def index
-    @bank = Bank.find(params[:bank_id])
-    @branches = @bank.branches
+      @bank = Bank.find(params[:bank_id])
+      @branches = []
+    if params[:alphabetize] == 'true'
+      @branches = @bank.branches.order("name").all
+    else
+      @branches = @bank.branches
+    end
   end
 
   def new
