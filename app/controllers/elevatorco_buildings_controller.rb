@@ -1,7 +1,7 @@
 class ElevatorcoBuildingsController < ApplicationController
   def index
     @elevatorco = Elevatorco.find(params[:id])
-    if params[:sort] == "alpha"
+    if params[:alphabetize] == "true"
       @buildings = @elevatorco.buildings.sort_by_name
     else
       @buildings = @elevatorco.buildings
