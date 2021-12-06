@@ -1,7 +1,7 @@
 class BranchesController < ApplicationController
 
   def index
-    @branches = Branch.all
+    @branches = Branch.display_true
   end
 
   def show
