@@ -42,4 +42,19 @@ RSpec.describe 'bank index' do
     expect(current_path).to eq("/branches")
   end
 
+  it 'can delete the bank from the index page' do
+    bank = Bank.create!(name: 'BNP Paribas',
+                          hq_city_state: 'San Francisco, California',
+                          fdic_ins: true,
+                          mobile_app: true,
+                          size_by_assets: 1303558000)
+
+    visit '/banks'
+
+    click_button "Delete #{bank.name}"
+
+    expect(current_path).to eq('/banks')
+    expect(page).to_not have_content(bank.name)
+  end
+
 end

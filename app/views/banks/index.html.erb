@@ -9,5 +9,6 @@
   <%= bank.name %><br>
   created at <%= bank.created_at %>
   <%= button_to "Edit #{bank.name}", "/banks/#{bank.id}/edit", method: :get %>
+  <%= button_to "Delete #{bank.name}", "/banks/#{bank.id}", method: :delete %>
   </p>
 <% end %>

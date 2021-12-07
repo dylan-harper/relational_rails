@@ -3,8 +3,8 @@
 <h1> Branches </h1>
 
 <% @branches.each do |branch| %>
-  <header>
-    <p><%= branch.name %> <%= link_to "Edit #{branch.name}", "/branches/#{branch.id}/edit" %></p>
-  </header>
-
+    <p>
+      <%= branch.name %> <%= link_to "Edit #{branch.name}", "/branches/#{branch.id}/edit" %>
+      <%= button_to "Delete #{branch.name}", "/branches/#{branch.id}", method: :delete %>
+    </p>
 <% end %>
