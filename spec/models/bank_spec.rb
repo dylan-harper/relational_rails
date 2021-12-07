@@ -35,5 +35,11 @@ RSpec.describe Bank, type: :model do
       expect(@bank_2.branches_count).to eq(1)
       expect(@bank_3.branches_count).to eq(0)
     end
+
+    it '::revenue_threshold' do
+      test = Branch.revenue_threshold(1500000)
+
+      expect(test).to eq([@branch_2])
+    end
   end
 end

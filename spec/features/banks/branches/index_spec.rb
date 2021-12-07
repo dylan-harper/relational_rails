@@ -7,11 +7,11 @@ RSpec.describe 'Banks branches index' do
                           fdic_ins: true,
                           mobile_app: true,
                           size_by_assets: 1303558000)
-    @branch_1 = @bank_1.branches.create!(name: "Branch",
+    @branch_1 = @bank_1.branches.create!(name: "Lake Street",
                             zip_code: 123456,
                             has_atm: true,
                             quarterly_rev: 1000000)
-    @branch_2 = @bank_1.branches.create!(name: "Another Branch",
+    @branch_2 = @bank_1.branches.create!(name: "Puddle Lane",
                             zip_code: 654321,
                             has_atm: false,
                             quarterly_rev: 2000000)
@@ -57,6 +57,17 @@ RSpec.describe 'Banks branches index' do
     click_on "Alphabetize Branches"
 
     expect(current_path).to eq("/banks/#{@bank_1.id}/branches")
+  end
+
+  it 'only shows branches with stated quarterly revenue' do
+    visit "/banks/#{@bank_1.id}/branches"
+
+    fill_in "revenue", with: 1500000
+    click_button("Submit")
+
+    expect(current_path).to eq("/banks/#{@bank_1.id}/branches")
+    expect(page).to have_content(@branch_2.name)
+    expect(page).to_not have_content(@branch_1.name)
   end
 
 end
