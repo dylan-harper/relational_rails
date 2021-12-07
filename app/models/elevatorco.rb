@@ -1,5 +1,5 @@
 class Elevatorco < ApplicationRecord
-  has_many :buildings
+  has_many :buildings, dependent: :destroy 
 
   def self.sort_by_created
     Elevatorco.order("created_at")
