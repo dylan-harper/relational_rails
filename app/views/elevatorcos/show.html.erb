@@ -12,4 +12,5 @@
   <li><%= link_to "Buildings Under Service Contract", "/elevatorcos/#{@elevatorco.id}/buildings" %><br></li>
 </ul><br><br>
   <%= link_to "Update Company Info", "/elevatorcos/#{@elevatorco.id}/edit" %>
+  <%= link_to "Delete Company", "/elevatorcos/#{@elevatorco.id}", method: :delete %>
 </p>
