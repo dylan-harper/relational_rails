@@ -3,5 +3,6 @@
 <% @elevatorcos.each do |elevatorco| %>
   <h3><a href='/elevatorcos/<%= elevatorco.id %>'><%= elevatorco.name %></a></h3>
   <%= elevatorco.created_at %>
+  <%= link_to "Edit Company Info", "/elevatorcos/#{elevatorco.id}/edit" %>
 <% end %>
 <%= link_to "New Elevator Company", "/elevatorcos/new" %>
