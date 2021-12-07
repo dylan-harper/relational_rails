@@ -43,10 +43,10 @@ RSpec.describe 'the building index page' do
                                 elevatorco_id: @elevatorco2.id)
     visit "/buildings"
   end
-
-  it 'displays all buildings' do
-    expect(page).to have_content(@building.name && @building2.name)
-  end
+  #
+  # it 'displays all buildings' do
+  #   expect(page).to have_content(@building.name && @building2.name)
+  # end
 
   it 'links to elevatorcos main page' do
     click_link("Elevator Companies Main")
@@ -54,8 +54,14 @@ RSpec.describe 'the building index page' do
     expect(current_path).to eq('/elevatorcos')
   end
 
-  # it 'only displays buildings with needs_modernization?: true' do
-  #   expect(page).to have_content(@building2.name)
-  #   expect(page).to_not have_content(@building.name)
-  # end 
+  it 'only displays buildings with needs_modernization?: true' do
+    expect(page).to have_content(@building2.name)
+    expect(page).to_not have_content(@building.name)
+  end
+
+  it 'links to edit page' do
+    first(:link, "Edit Building Info").click
+
+    expect(current_path).to eq("/buildings/#{@building2.id}/edit")
+  end 
 end

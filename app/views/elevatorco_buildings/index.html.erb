@@ -5,7 +5,8 @@
 <h3><%= @elevatorco.name %> Service Contracts</h3>
 <p>
 <% @buildings.each do |building| %>
-<%= link_to building.name, "/buildings/#{building.id}" %><br>
+  <%= link_to building.name, "/buildings/#{building.id}" %>
+  <%= link_to "Edit Building Info", "/buildings/#{building.id}/edit" %>
 <% end %><br>
 <%= link_to "Sort Alphabetically", "/elevatorcos/#{@elevatorco.id}/buildings?alphabetize=true" %><br>
 <%= link_to "Add New Service Contract", "/elevatorcos/#{@elevatorco.id}/buildings/new" %>

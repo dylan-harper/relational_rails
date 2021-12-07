@@ -2,4 +2,5 @@
 <h1> Buildings </h1>
 <% @buildings.each do |building| %>
   <h3><a href='/buildings/<%= building.id %>'><%= building.name %></a></h3>
+  <%= link_to "Edit Building Info", "/buildings/#{building.id}/edit" %>
 <% end %>

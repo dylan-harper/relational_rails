@@ -67,4 +67,10 @@ RSpec.describe 'Elevatorcos Buildings Index' do
     expect(current_path).to eq("/elevatorcos/#{@elevatorco2.id}/buildings")
   end
 
+  it 'links to edit page' do
+    first(:link, "Edit Building Info").click
+
+    expect(current_path).to eq("/buildings/#{@building2.id}/edit")
+  end 
+
 end
