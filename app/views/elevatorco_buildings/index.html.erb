@@ -6,8 +6,14 @@
 <p>
 <% @buildings.each do |building| %>
   <%= link_to building.name, "/buildings/#{building.id}" %>
-  <%= link_to "Edit Building Info", "/buildings/#{building.id}/edit" %>
-<% end %><br>
+  <%= link_to "Edit Building Info", "/buildings/#{building.id}/edit" %><br>
+<% end %><br><br>
 <%= link_to "Sort Alphabetically", "/elevatorcos/#{@elevatorco.id}/buildings?alphabetize=true" %><br>
+<%= form_with url: "/elevatorcos/#{@elevatorco.id}/buildings?filter_units=true", method: :post, local: true do |form| %>
+  <%= form.label "Only show buildings with more than:" %>
+  <%= form.number_field :units %>
+  <%= "units" %><br>
+  <%= form.submit "Submit" %>
+<% end %>
 <%= link_to "Add New Service Contract", "/elevatorcos/#{@elevatorco.id}/buildings/new" %>
 </p>

@@ -8,4 +8,8 @@ class Building < ApplicationRecord
   def self.sort_by_name
     Building.order("name")
   end
+
+  def self.unit_threshold(units)
+    Building.where('num_units >= ?', units)
+  end
 end
