@@ -9,7 +9,7 @@
   <%= link_to "Edit Building Info", "/buildings/#{building.id}/edit" %><br>
 <% end %><br><br>
 <%= link_to "Sort Alphabetically", "/elevatorcos/#{@elevatorco.id}/buildings?alphabetize=true" %><br>
-<%= form_with url: "/elevatorcos/#{@elevatorco.id}/buildings?filter_units=true", method: :post, local: true do |form| %>
+<%= form_with url: "/elevatorcos/#{@elevatorco.id}/buildings", method: :get, local: true do |form| %>
   <%= form.label "Only show buildings with more than:" %>
   <%= form.number_field :units %>
   <%= "units" %><br>
