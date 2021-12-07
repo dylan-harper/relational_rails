@@ -21,6 +21,9 @@ Rails.application.routes.draw do
   get '/elevatorcos/:id/edit', to: 'elevatorcos#edit'
   patch '/elevatorcos/:id/', to: 'elevatorcos#update'
 
+  #Parent Delete
+  delete '/elevatorcos/:id', to: 'elevatorcos#destroy'
+
   #Child Index
   get '/buildings', to: 'buildings#index'
   get '/branches', to: 'branches#index'

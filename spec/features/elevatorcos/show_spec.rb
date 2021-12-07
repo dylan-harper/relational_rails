@@ -94,4 +94,11 @@ RSpec.describe 'the elevatorcos show page' do
     expect(current_path).to eq("/elevatorcos/#{@elevatorco.id}/edit")
   end
 
+  it 'can delete elevatorco' do
+    click_link("Delete Company")
+
+    expect(current_path).to eq("/elevatorcos")
+    expect(page).to_not have_content("#{@elevatorco.name}")
+  end
+
 end

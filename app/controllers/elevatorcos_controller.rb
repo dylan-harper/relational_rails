@@ -25,6 +25,12 @@ class ElevatorcosController < ApplicationController
     redirect_to "/elevatorcos/#{@elevatorco.id}"
   end
 
+  def destroy
+    @elevatorco = Elevatorco.find(params[:id])
+    @elevatorco.destroy
+    redirect_to '/elevatorcos'
+  end
+
 private
   def elevatorco_params
     params.permit(:name,
