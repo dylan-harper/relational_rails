@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   #Child Index
   get '/buildings', to: 'buildings#index'
   get '/branches', to: 'branches#index'
+  delete '/banks/:id', to: 'banks#destroy'
 
   #Child Show
   get '/branches/:id', to: 'branches#show'
@@ -48,5 +49,6 @@ Rails.application.routes.draw do
   post '/banks/:id/branches', to: 'bank_branches#create'
   get '/elevatorcos/:id/buildings/new', to: 'elevatorco_buildings#new'
   post '/elevatorcos/:id/buildings/', to: 'elevatorco_buildings#create'
+
 
 end

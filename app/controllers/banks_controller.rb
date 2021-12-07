@@ -16,8 +16,10 @@ class BanksController < ApplicationController
     redirect_to "/banks"
   end
 
-  def bank_params
-    params.permit(:name, :hq_city_state, :fdic_ins, :mobile_app, :size_by_assets)
+  def destroy
+    bank = Bank.find(params[:id])
+    bank.destroy
+    redirect_to '/banks'
   end
 
   def edit
@@ -28,6 +30,12 @@ class BanksController < ApplicationController
     bank = Bank.find(params[:id])
     bank.update(bank_params)
     redirect_to '/banks'
+  end
+
+  private
+
+  def bank_params
+    params.permit(:name, :hq_city_state, :fdic_ins, :mobile_app, :size_by_assets)
   end
 
 end
