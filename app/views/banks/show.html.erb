@@ -12,3 +12,5 @@
 <p>Updated At: <%= @bank.updated_at %></p>
 
 <button><%= link_to "Edit #{@bank.name}", "/banks/#{@bank.id}/edit" %></button>
+
+<button><%= link_to "Delete #{@bank.name}", "/banks/#{@bank.id}", method: :delete %></button>
