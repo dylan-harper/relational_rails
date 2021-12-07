@@ -97,7 +97,7 @@ RSpec.describe 'bank show' do
     expect(current_path).to eq("/banks/#{@bank_1.id}/branches")
   end
 
-  it 'can delete the bank from the index page' do
+  it 'can delete the bank from the show page' do
     visit "/banks/#{@bank_1.id}"
 
     click_link "Delete #{@bank_1.name}"

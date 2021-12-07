@@ -18,6 +18,14 @@ class BranchesController < ApplicationController
     redirect_to "/branches/#{branch.id}"
   end
 
+  def destroy
+    branch = Branch.find(params[:id])
+    branch.destroy
+    redirect_to '/branches'
+  end
+
+  private
+
   def branch_params
     params.permit(:name, :zip_code, :has_atm, :quarterly_rev)
   end
