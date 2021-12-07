@@ -88,7 +88,14 @@ RSpec.describe 'the buildings show page' do
   it 'links to edit form' do
     click_link("Update Building Info")
 
-    expect(current_path).to eq("/buildings/#{@building.id}/edit") 
+    expect(current_path).to eq("/buildings/#{@building.id}/edit")
   end
+
+  it 'deletes a building record' do
+    click_link("Delete Building")
+
+    expect(current_path).to eq("/buildings")
+    expect(page).to_not have_content("#{@building.name}")
+  end 
 
 end
