@@ -4,7 +4,9 @@ class BankBranchesController < ApplicationController
       @bank = Bank.find(params[:bank_id])
       @branches = []
     if params[:alphabetize] == 'true'
-      @branches = @bank.branches.order("name").all
+      @branches = @bank.branches.order('name').all
+    elsif params[:revenue].present?
+      @branches = @bank.branches.revenue_threshold(params[:revenue])
     else
       @branches = @bank.branches
     end
@@ -19,6 +21,8 @@ class BankBranchesController < ApplicationController
     @branch = @bank.branches.create(branch_params)
     redirect_to "/banks/#{@bank.id}/branches"
   end
+
+  private
 
   def branch_params
     params.permit(:name, :zip_code, :has_atm, :quarterly_rev)

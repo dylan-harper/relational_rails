@@ -3,6 +3,13 @@
 <p><%= link_to 'New Branch', "/banks/#{@bank.id}/branches/new" %></p>
 <p><%= link_to 'Alphabetize Branches', "/banks/#{@bank.id}/branches?alphabetize=true" %></p>
 
+<%= form_with url: "/banks/#{@bank.id}/branches", method: :get, local: true do |form| %>
+ <%= form.label "Only show branches with quarterly revenue higher than:" %>
+ <%= form.number_field :revenue %>
+ <%= "revenue" %><br>
+ <%= form.submit "Submit" %>
+<% end %>
+
 <% @branches.each do |branch| %>
   <p><%= link_to branch.name, "/branches/#{branch.id}" %></p>
   <p><%= link_to "Edit #{branch.name}", "/branches/#{branch.id}/edit" %></p>
