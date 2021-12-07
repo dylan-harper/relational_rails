@@ -65,21 +65,40 @@ RSpec.describe 'branch show' do
   end
 
   it 'has a link to the banks index' do
-    @bank_1 = Bank.create!(name: 'Wells Fargo',
+    bank_1 = Bank.create!(name: 'Wells Fargo',
                           hq_city_state: 'San Francisco, California',
                           fdic_ins: true,
                           mobile_app: true,
                           size_by_assets: 1303558000)
-    @branch_1 = @bank_1.branches.create!(name: "Branch",
+    branch_1 = bank_1.branches.create!(name: "Branch",
                             zip_code: 123456,
                             has_atm: true,
                             quarterly_rev: 1000000)
 
-    visit "/branches/#{@branch_1.id}"
+    visit "/branches/#{branch_1.id}"
 
     click_on "Banks Main"
 
     expect(current_path).to eq("/banks")
+  end
+
+  it 'can delete the branch from the show page' do
+    bank_1 = Bank.create!(name: 'Wells Fargo',
+                          hq_city_state: 'San Francisco, California',
+                          fdic_ins: true,
+                          mobile_app: true,
+                          size_by_assets: 1303558000)
+    branch_1 = bank_1.branches.create!(name: "Lake Street",
+                            zip_code: 123456,
+                            has_atm: true,
+                            quarterly_rev: 1000000)
+
+    visit "/branches/#{branch_1.id}"
+
+    click_link "Delete #{branch_1.name}"
+
+    expect(current_path).to eq("/branches")
+    expect(page).to_not have_content(branch_1.name)
   end
 
 end

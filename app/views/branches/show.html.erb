@@ -11,3 +11,5 @@
 <p>Bank ID: <%= @branch.bank_id %></p>
 <p>Created At: <%= @branch.created_at %></p>
 <p>Updated At: <%= @branch.updated_at %></p>
+
+<button><%= link_to "Delete #{@branch.name}", "/branches/#{@branch.id}", method: :delete %></button>
