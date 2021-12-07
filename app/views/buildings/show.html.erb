@@ -13,4 +13,5 @@
     <li>Service contract holder: <%= @building.elevatorco.name %></li>
   </ul><br>
     <%= link_to "Update Building Info", "/buildings/#{@building.id}/edit", method: :get %>
+    <%= link_to "Delete Building", "/buildings/#{@building.id}", method: :delete %>
 </p>
