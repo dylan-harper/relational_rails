@@ -27,7 +27,7 @@ RSpec.describe 'Elevatorcos Buildings Index' do
                                  address: '46112 Point View',
                                  owner: 'Salvador Datun',
                                  unit_type: 'freight',
-                                 num_units: '1',
+                                 num_units: 1,
                                  year_installed: '1996-01-01',
                                  needs_modernization?: true,
                                  last_serviced: '2021-10-16',
@@ -36,7 +36,7 @@ RSpec.describe 'Elevatorcos Buildings Index' do
                                 address: '408 Broadway',
                                 owner: 'Phil Big',
                                 unit_type: 'vertical platform lift',
-                                num_units: 1,
+                                num_units: 6,
                                 year_installed: '2014-01-01',
                                 needs_modernization?: false,
                                 last_serviced: '2021-07-02',
@@ -71,6 +71,15 @@ RSpec.describe 'Elevatorcos Buildings Index' do
     first(:link, "Edit Building Info").click
 
     expect(current_path).to eq("/buildings/#{@building2.id}/edit")
-  end 
+  end
+
+  it 'shows only buildings over user input threshold' do
+    fill_in "units", with: 4
+    click_button("Submit")
+
+    expect(current_path).to eq("/elevatorcos/#{@elevatorco2.id}/buildings")
+    expect(page).to have_content(@building3.name)
+    expect(page).to_not have_content(@building.name)
+  end
 
 end

@@ -30,7 +30,7 @@ RSpec.describe Building do
                                    address: '46112 Point View',
                                    owner: 'Salvador Datun',
                                    unit_type: 'freight',
-                                   num_units: '1',
+                                   num_units: 1,
                                    year_installed: 19960101,
                                    needs_modernization?: true,
                                    last_serviced: 20211016,
@@ -39,7 +39,7 @@ RSpec.describe Building do
                                    address: '408 Broadway',
                                    owner: 'Phil Big',
                                    unit_type: 'vertical platform lift',
-                                   num_units: 1,
+                                   num_units: 6,
                                    year_installed: 20140101,
                                    needs_modernization?: false,
                                    last_serviced: 20210702,
@@ -63,6 +63,14 @@ RSpec.describe Building do
         expect(sorted.first).to eq(@building3)
         expect(sorted.last).to eq(@building)
       end
-    end 
+    end
+
+    describe '#unit_threshold' do
+      it 'returns only buildings with num_units more than entered amt' do
+        filtered = Building.unit_threshold(4)
+
+        expect(filtered).to eq([@building, @building3])
+      end
+    end
   end
 end
