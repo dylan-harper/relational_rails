@@ -38,6 +38,9 @@ Rails.application.routes.draw do
   get '/branches/:id/edit', to: 'branches#edit'
   patch '/branches/:id', to: 'branches#update'
 
+  #Child Delete
+  delete '/buildings/:id', to: 'buildings#destroy'
+
   #Parent Child Index
   get '/banks/:bank_id/branches', to: 'bank_branches#index'
   get 'elevatorcos/:id/buildings', to: 'elevatorco_buildings#index'
