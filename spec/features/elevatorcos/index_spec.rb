@@ -63,4 +63,10 @@ RSpec.describe 'the elevatorcos index page' do
 
     expect(current_path).to eq('/elevatorcos/new')
   end
+
+  it 'links to edit form' do
+    first(:link, "Edit Company Info").click
+
+    expect(current_path).to eq("/elevatorcos/#{@elevatorco.id}/edit")
+  end
 end
