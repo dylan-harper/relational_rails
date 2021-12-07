@@ -55,4 +55,6 @@ Rails.application.routes.draw do
   get '/elevatorcos/:id/buildings/new', to: 'elevatorco_buildings#new'
   post '/elevatorcos/:id/buildings/', to: 'elevatorco_buildings#create'
 
+  delete '/banks/:id', to: 'banks#destroy'
+
 end

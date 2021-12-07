@@ -5,5 +5,5 @@
 
 <% @branches.each do |branch| %>
   <p><%= link_to branch.name, "/branches/#{branch.id}" %></p>
-
+  <p><%= link_to "Edit #{branch.name}", "/branches/#{branch.id}/edit" %></p>
 <% end %>

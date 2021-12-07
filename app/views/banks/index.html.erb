@@ -1,7 +1,13 @@
 <p><%= link_to "Branches Main", "/branches" %></p>
 
-<h1> Banks </h1> <p><%= link_to "New Bank", "/banks/new" %></p>
-
+<header>
+  <h1> Banks </h1> <%= link_to "New Bank", "/banks/new" %>
+</header>
+<br>
 <% @banks.each do |bank| %>
-  <h3><%= bank.name %>, created at <%= bank.created_at %> <%= button_to "Edit #{bank.name}", "/banks/#{bank.id}/edit", method: :get %></h3>
+  <p>
+  <%= bank.name %><br>
+  created at <%= bank.created_at %>
+  <%= button_to "Edit #{bank.name}", "/banks/#{bank.id}/edit", method: :get %>
+  </p>
 <% end %>
