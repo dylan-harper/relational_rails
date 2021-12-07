@@ -3,7 +3,7 @@ class ElevatorcoBuildingsController < ApplicationController
     @elevatorco = Elevatorco.find(params[:id])
     if params[:alphabetize] == "true"
       @buildings = @elevatorco.buildings.sort_by_name
-    elsif params[:filter_units] == "true"
+    elsif params[:units].present?
       @buildings = @elevatorco.buildings.unit_threshold(params[:units])
     else
       @buildings = @elevatorco.buildings
