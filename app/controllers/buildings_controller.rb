@@ -17,6 +17,12 @@ class BuildingsController < ApplicationController
     redirect_to "/buildings/#{@building.id}"
   end
 
+  def destroy
+    @building = Building.find(params[:id])
+    @building.destroy
+    redirect_to "/buildings"
+  end 
+
 private
 
   def building_params
