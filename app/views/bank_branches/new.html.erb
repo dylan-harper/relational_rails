@@ -6,8 +6,11 @@
 <%= form.label :zip_code %>
 <%= form.text_field :zip_code %>
 <br>
-<%= form.label :has_atm %>
-<%= form.text_field :has_atm %>
+Has ATM?
+<%= form.label :has_atm, "True" %>
+<%= form.radio_button :has_atm, true %>
+<%= form.label :has_atm, "False" %>
+<%= form.radio_button :has_atm, false %>
 <br>
 <%= form.label :quarterly_rev %>
 <%= form.text_field :quarterly_rev %>
