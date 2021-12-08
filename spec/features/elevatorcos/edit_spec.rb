@@ -52,17 +52,45 @@ RSpec.describe 'elevatorcos edit' do
                                       offers_service?: true,
                                       offers_modernization?: true)
     visit "/elevatorcos/#{@elevatorco3.id}/edit"
-    
-    fill_in 'name', with: 'Sky Brothers'
-    fill_in 'address', with: '7439 Upper Limit'
-    fill_in 'num_technicians', with: 9
-    fill_in 'offers_install', with: true
-    fill_in 'offers_service', with: true
-    fill_in 'offers_modernization', with: true
-    click_button("Save")
+
+    fill_in('name', with: 'Sky Brothers')
+    fill_in('address', with: '7439 Upper Limit')
+    fill_in('num_technicians', with: 9)
+    choose('offers_install_true', option: true)
+    choose('offers_service_true', option: true)
+    choose('offers_modernization_true', option: true)
+    click_button('Save Changes')
 
     expect(current_path).to eq("/elevatorcos/#{@elevatorco3.id}")
     expect(page).to have_content('Sky Brothers')
     expect(page).to_not have_content('Sky Bros')
   end
+
+  it 'links to current page' do
+    visit "elevatorcos/#{@elevatorco.id}/edit"
+    click_link("Update #{@elevatorco.name}")
+
+    expect(current_path).to eq("/elevatorcos/#{@elevatorco.id}/edit")
+  end
+
+  it 'links to show page' do
+    visit "elevatorcos/#{@elevatorco.id}/edit"
+    click_link("Back to #{@elevatorco.name}")
+
+    expect(current_path).to eq("/elevatorcos/#{@elevatorco.id}")
+  end
+
+  it 'links to elevatorco index' do
+    visit "elevatorcos/#{@elevatorco.id}/edit"
+    click_link("Elevator Companies")
+
+    expect(current_path).to eq('/elevatorcos')
+  end
+
+  it 'links to buildings index' do
+    visit "elevatorcos/#{@elevatorco.id}/edit"
+    click_link("Buildings")
+
+    expect(current_path).to eq('/buildings')
+  end 
 end

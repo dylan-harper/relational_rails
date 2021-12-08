@@ -49,10 +49,28 @@ RSpec.describe 'Elevatorcos Buildings Index' do
     expect(page).to have_content(@building3.name)
   end
 
-  it 'links to buildings main page' do
-    click_link("Buildings Main")
+  it 'links to buildings index' do
+    click_link("Buildings")
 
     expect(current_path).to eq('/buildings')
+  end
+
+  it 'links to elevatorcos index' do
+    click_link("Elevator Companies")
+
+    expect(current_path).to eq('/elevatorcos')
+  end
+
+  it 'links to current page' do
+    click_link("#{@elevatorco2.name} Service Contracts")
+
+    expect(current_path).to eq("/elevatorcos/#{@elevatorco2.id}/buildings")
+  end
+
+  it 'links back to elevatorco show page' do
+    click_link("Back to #{@elevatorco2.name}")
+
+    expect(current_path).to eq("/elevatorcos/#{@elevatorco2.id}")
   end
 
   it 'links to add new building' do
@@ -78,6 +96,13 @@ RSpec.describe 'Elevatorcos Buildings Index' do
     first(:link, "Edit Building Info").click
 
     expect(current_path).to eq("/buildings/#{@building2.id}/edit")
+  end
+
+  it 'can delete building' do
+    first(:link, "Delete Building").click
+
+    expect(current_path).to eq("/buildings")
+    expect(page).to_not have_content("#{@building2.name}")
   end
 
   it 'shows only buildings over user input threshold' do

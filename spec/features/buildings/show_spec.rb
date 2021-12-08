@@ -72,18 +72,30 @@ RSpec.describe 'the buildings show page' do
   it 'displays buildings elevatorco name' do
     expect(page).to have_content(@elevatorco.name)
   end
+  it 'displays buildings created_at' do
+    expect(page).to have_content(@elevatorco.created_at)
+  end
+  it 'displays buildings updated_at' do
+    expect(page).to have_content(@elevatorco.updated_at)
+  end
 
   it 'links to buildings main page' do
-    click_link("Back to Buildings Main")
+    click_link("Buildings")
 
     expect(current_path).to eq('/buildings')
   end
 
   it 'links to elevatorcos main page' do
-    click_link("Elevator Companies Main")
+    click_link("Elevator Companies")
 
     expect(current_path).to eq('/elevatorcos')
   end
+
+  it 'links to current page' do
+    click_link("#{@building.name}")
+
+    expect(current_path).to eq("/buildings/#{@building.id}")
+  end 
 
   it 'links to edit form' do
     click_link("Update Building Info")
@@ -96,6 +108,6 @@ RSpec.describe 'the buildings show page' do
 
     expect(current_path).to eq("/buildings")
     expect(page).to_not have_content("#{@building.name}")
-  end 
+  end
 
 end

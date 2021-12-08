@@ -1,15 +1,32 @@
-<%= form_with url: "/elevatorcos/#{@elevatorco.id}", method: :patch, local: true do |form| %>
+<%= stylesheet_link_tag 'main.css' %>
+<ul>
+  <li><a class="active" href=<%= "/elevatorcos/#{@elevatorco.id}/edit" %>>Update <%= "#{@elevatorco.name}" %></a></li>
+  <li><a href=<%= "/elevatorcos/#{@elevatorco.id}" %>>Back to <%= "#{@elevatorco.name}" %></a></li>
+  <li><a href='/elevatorcos'>Elevator Companies</a></li>
+  <li><a href='/buildings'>Buildings</a></li>
+</ul>
+
+<%= form_with url: "/elevatorcos/#{@elevatorco.id}/", method: :patch, local: true do |form| %>
   <%= form.label "Name:" %><br>
-  <%= form.text_field :name %><br>
+  <%= form.text_field :name, :value => @elevatorco.name %><br>
   <%= form.label "Address:" %><br>
-  <%= form.text_field :address %><br>
+  <%= form.text_field :address, :value => @elevatorco.address %><br>
   <%= form.label "Number of Technicians:" %><br>
-  <%= form.text_field :num_technicians %><br>
-  <%= form.label "Offers Installation?:" %><br>
-  <%= form.text_field :offers_install? %><br>
-  <%= form.label "Offers Service?:" %><br>
-  <%= form.text_field :offers_service? %><br>
-  <%= form.label "Offers Modernization?:" %><br>
-  <%= form.text_field :offers_modernization? %><br><br>
-  <%= form.submit "Save" %>
+  <%= form.number_field :num_technicians, :value => @elevatorco.num_technicians %><br>
+  Offers Installation?<br>
+  <%= form.label :install_true, "YES" %>
+  <%= form.radio_button :offers_install?, true %>
+  <%= form.label :install_false, "NO" %>
+  <%= form.radio_button :offers_install?, false %><br>
+  Offers Service?<br>
+  <%= form.label :service_true, "YES" %>
+  <%= form.radio_button :offers_service?, true %>
+  <%= form.label :service_false, "NO" %>
+  <%= form.radio_button :offers_service?, false %><br>
+  Offers Modernization?<br>
+  <%= form.label :mod_true, "YES" %>
+  <%= form.radio_button :offers_modernization?, true %>
+  <%= form.label :mod_false, "NO" %>
+  <%= form.radio_button :offers_modernization?, false %><br><br>
+  <%= form.submit "Save Changes" %>
 <% end %>
