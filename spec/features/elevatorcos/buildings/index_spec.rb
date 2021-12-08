@@ -61,10 +61,17 @@ RSpec.describe 'Elevatorcos Buildings Index' do
     expect(current_path).to eq("/elevatorcos/#{@elevatorco2.id}/buildings/new")
   end
 
-  it 'lists buildings in alphabetical order' do
+  it 'has a link to sort buildings alphabetically' do
     click_link("Sort Alphabetically")
 
     expect(current_path).to eq("/elevatorcos/#{@elevatorco2.id}/buildings")
+  end
+
+  it 'sorts alphabetically when link is clicked' do
+    click_link("Sort Alphabetically")
+
+    expect(@building3.name).to appear_before(@building2.name)
+    expect(@building2.name).to_not appear_before(@building3.name)
   end
 
   it 'links to edit page' do
