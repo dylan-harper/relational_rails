@@ -1,5 +1,7 @@
 <p><%= link_to "Banks Main", "/banks" %> <%= link_to "Branches Main", "/branches" %></p>
-
+----------------------------
+<br>
+<br>
 <p><%= link_to 'New Branch', "/banks/#{@bank.id}/branches/new" %></p>
 <p><%= link_to 'Alphabetize Branches', "/banks/#{@bank.id}/branches?alphabetize=true" %></p>
 
@@ -9,8 +11,14 @@
  <%= "revenue" %><br>
  <%= form.submit "Submit" %>
 <% end %>
-
+  <br>
+  <br>
 <% @branches.each do |branch| %>
   <p><%= link_to branch.name, "/branches/#{branch.id}" %></p>
-  <p><%= link_to "Edit #{branch.name}", "/branches/#{branch.id}/edit" %></p>
+  <p>Zip code: <%= branch.zip_code %></p>
+  <p>Has ATM: <%= branch.has_atm %></p>
+  <p>Quarterly Revenue: <%= branch.quarterly_rev %></p>
+  <button><%= link_to "Edit #{branch.name}", "/branches/#{branch.id}/edit" %></button>
+  <br>
+  ----------------------------
 <% end %>

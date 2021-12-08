@@ -1,6 +1,6 @@
 <p><%= link_to "Banks Main", "/banks" %> <%= link_to "Branches Main", "/branches" %></p>
-
-<h1><%= @branch.name %></h1><p><%= button_to "Edit #{@branch.name}", "/branches/#{@branch.id}/edit", method: :get %></p>
+----------------------------
+<h1><%= @branch.name %></h1>
 <h3>ID: <%= @branch.id %></h3>
 
 
@@ -11,5 +11,7 @@
 <p>Bank ID: <%= @branch.bank_id %></p>
 <p>Created At: <%= @branch.created_at %></p>
 <p>Updated At: <%= @branch.updated_at %></p>
+
+<button><%= link_to "Edit #{@branch.name}", "/branches/#{@branch.id}/edit", method: :get %></button>
 
 <button><%= link_to "Delete #{@branch.name}", "/branches/#{@branch.id}", method: :delete %></button>

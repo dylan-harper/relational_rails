@@ -1,14 +1,19 @@
 <p><%= link_to "Branches Main", "/branches" %></p>
-
+----------------------------
 <header>
   <h1> Banks </h1> <%= link_to "New Bank", "/banks/new" %>
 </header>
 <br>
 <% @banks.each do |bank| %>
   <p>
-  <%= bank.name %><br>
+  <a href='/banks/<%= bank.id %>'><%= bank.name %></a><br>
+  ID: <%= bank.id %><br>
   created at <%= bank.created_at %>
-  <%= button_to "Edit #{bank.name}", "/banks/#{bank.id}/edit", method: :get %>
-  <%= button_to "Delete #{bank.name}", "/banks/#{bank.id}", method: :delete %>
+  <br>
+  <button><%= link_to "Edit #{bank.name}", "/banks/#{bank.id}/edit", method: :get %></button>
+
+  <button><%= link_to "Delete #{bank.name}", "/banks/#{bank.id}", method: :delete %></button>
+  <br>
+  ----------------------------
   </p>
 <% end %>
