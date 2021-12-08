@@ -9,4 +9,8 @@ class Bank < ApplicationRecord
     self.branches.order('name').all
   end
 
+  def self.sort_by_created
+    Bank.order("created_at")
+  end
+
 end
