@@ -45,7 +45,7 @@ RSpec.describe 'branches index' do
     expect(page).not_to have_content(@branch_2.name)
   end
 
-  it 'can delete the bank from the index page' do
+  it 'can delete the branch from the index page' do
     branch = @bank_1.branches.create!(name: 'First Street',
                               zip_code: 123456,
                               has_atm: true,
@@ -54,7 +54,7 @@ RSpec.describe 'branches index' do
 
     visit '/branches'
 
-    click_button "Delete #{branch.name}"
+    click_link "Delete #{branch.name}"
 
     expect(current_path).to eq('/branches')
     expect(page).to_not have_content(branch.name)

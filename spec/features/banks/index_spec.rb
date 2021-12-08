@@ -51,7 +51,7 @@ RSpec.describe 'bank index' do
 
     visit '/banks'
 
-    click_button "Delete #{bank.name}"
+    click_link "Delete #{bank.name}"
 
     expect(current_path).to eq('/banks')
     expect(page).to_not have_content(bank.name)
