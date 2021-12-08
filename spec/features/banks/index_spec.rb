@@ -32,6 +32,9 @@ RSpec.describe 'bank index' do
     expect(page).to have_content(@bank_1.created_at)
     expect(page).to have_content(@bank_2.created_at)
     expect(page).to have_content(@bank_3.created_at)
+
+    expect(@bank_1.name).to appear_before(@bank_2.name)
+    expect(@bank_2.name).to appear_before(@bank_3.name)
   end
 
   it 'has a link to the branches index' do
