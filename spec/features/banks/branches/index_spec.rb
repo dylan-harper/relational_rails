@@ -15,6 +15,10 @@ RSpec.describe 'Banks branches index' do
                             zip_code: 654321,
                             has_atm: false,
                             quarterly_rev: 2000000)
+    @branch_3 = @bank_1.branches.create!(name: "Apple Lane",
+                            zip_code: 654321,
+                            has_atm: false,
+                            quarterly_rev: 2000000)
   end
 
   it 'shows all of the branches for the bank' do
@@ -57,6 +61,9 @@ RSpec.describe 'Banks branches index' do
     click_on "Alphabetize Branches"
 
     expect(current_path).to eq("/banks/#{@bank_1.id}/branches")
+
+    expect(@branch_1.name).to appear_before(@branch_2.name)
+    expect(@branch_3.name).to appear_before(@branch_1.name)
   end
 
   it 'only shows branches with stated quarterly revenue' do
