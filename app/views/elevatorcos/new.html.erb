@@ -4,12 +4,21 @@
   <%= form.label "Address:" %><br>
   <%= form.text_field :address %><br>
   <%= form.label "Number of Technicians:" %><br>
-  <%= form.text_field :num_technicians %><br>
-  <%= form.label "Offers Installation?:" %><br>
-  <%= form.text_field :offers_install? %><br>
-  <%= form.label "Offers Service?:" %><br>
-  <%= form.text_field :offers_service? %><br>
-  <%= form.label "Offers Modernization?:" %><br>
-  <%= form.text_field :offers_modernization? %><br><br>
+  <%= form.number_field :num_technicians %><br>
+  Offers Installation?<br>
+  <%= form.label :install_true, "YES" %>
+  <%= form.radio_button :offers_install?, true %>
+  <%= form.label :install_false, "NO" %>
+  <%= form.radio_button :offers_install?, false %><br>
+  Offers Service?<br>
+  <%= form.label :service_true, "YES" %>
+  <%= form.radio_button :offers_service?, true %>
+  <%= form.label :service_false, "NO" %>
+  <%= form.radio_button :offers_service?, false %><br>
+  Offers Modernization?<br>
+  <%= form.label :mod_true, "YES" %>
+  <%= form.radio_button :offers_modernization?, true %>
+  <%= form.label :mod_false, "NO" %>
+  <%= form.radio_button :offers_modernization?, false %><br><br>
   <%= form.submit "Add Elevator Company" %>
 <% end %>
