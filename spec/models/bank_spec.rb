@@ -24,7 +24,15 @@ RSpec.describe Bank, type: :model do
                               zip_code: 123456,
                               has_atm: true,
                               quarterly_rev: 1000000)
-      @branch_2 = @bank_2.branches.create!(name: "Other Branch",
+      @branch_2 = @bank_2.branches.create!(name: "Z",
+                              zip_code: 654321,
+                              has_atm: false,
+                              quarterly_rev: 2000000)
+      @branch_3 = @bank_2.branches.create!(name: "O",
+                              zip_code: 654321,
+                              has_atm: false,
+                              quarterly_rev: 2000000)
+      @branch_4 = @bank_2.branches.create!(name: "B",
                               zip_code: 654321,
                               has_atm: false,
                               quarterly_rev: 2000000)
@@ -32,14 +40,14 @@ RSpec.describe Bank, type: :model do
 
     it '#branches_count' do
       expect(@bank_1.branches_count).to eq(1)
-      expect(@bank_2.branches_count).to eq(1)
+      expect(@bank_2.branches_count).to eq(3)
       expect(@bank_3.branches_count).to eq(0)
     end
 
-    it '::revenue_threshold' do
-      test = Branch.revenue_threshold(1500000)
-
-      expect(test).to eq([@branch_2])
+    it '#order_by_name' do
+      expect(@bank_2.order_by_name).to eq([@branch_4, @branch_3, @branch_2])
     end
+
+
   end
 end

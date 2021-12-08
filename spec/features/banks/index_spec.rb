@@ -51,10 +51,18 @@ RSpec.describe 'bank index' do
 
     visit '/banks'
 
-    click_button "Delete #{bank.name}"
+    click_link "Delete #{bank.name}"
 
     expect(current_path).to eq('/banks')
     expect(page).to_not have_content(bank.name)
+  end
+
+  it 'links to parent edit page' do
+    visit "/banks"
+
+    click_link("Edit #{@bank_1.name}")
+
+    expect(current_path).to eq("/banks/#{@bank_1.id}/edit")
   end
 
 end

@@ -22,7 +22,7 @@ RSpec.describe 'Bank edit' do
 
     visit '/banks'
 
-    click_button "Edit #{bank.name}"
+    click_link "Edit #{bank.name}"
 
     expect(current_path).to eq("/banks/#{bank.id}/edit")
   end
@@ -38,7 +38,7 @@ RSpec.describe 'Bank edit' do
 
     expect(page).to have_content('Chase')
 
-    click_button 'Edit Chase'
+    click_link 'Edit Chase'
 
     fill_in 'Name', with: 'JP Morgan Chase'
     click_button 'Update Bank'
