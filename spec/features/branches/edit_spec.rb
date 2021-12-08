@@ -18,7 +18,7 @@ RSpec.describe 'branch edit' do
 
     visit "/banks/#{@bank.id}/branches"
     click_link "#{@branch.name}"
-    click_button "Edit #{@branch.name}"
+    click_link "Edit #{@branch.name}"
 
     expect(current_path).to eq("/branches/#{@branch.id}/edit")
   end
@@ -29,7 +29,7 @@ RSpec.describe 'branch edit' do
 
     expect(page).to have_content('Branch')
 
-    click_button 'Edit Branch'
+    click_link 'Edit Branch'
 
     fill_in 'Name', with: 'New Branch'
     click_button 'Update Branch'

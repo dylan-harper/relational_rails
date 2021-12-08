@@ -4,7 +4,7 @@ class BankBranchesController < ApplicationController
       @bank = Bank.find(params[:bank_id])
       @branches = []
     if params[:alphabetize] == 'true'
-      @branches = @bank.branches.order('name').all
+      @branches = @bank.order_by_name
     elsif params[:revenue].present?
       @branches = @bank.branches.revenue_threshold(params[:revenue])
     else

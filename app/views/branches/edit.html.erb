@@ -1,15 +1,15 @@
 <%= form_with url: "/branches/#{@branch.id}", method: :patch, local: true do |form| %>
   <%= form.label :name %>
-  <%= form.text_field :name %>
+  <%= form.text_field :name, :value => @branch.name  %>
   <br>
   <%= form.label :zip_code %>
-  <%= form.text_field :zip_code %>
+  <%= form.text_field :zip_code, :value => @branch.zip_code %>
   <br>
   <%= form.label :has_atm %>
-  <%= form.text_field :has_atm %>
+  <%= form.text_field :has_atm, :value => @branch.has_atm %>
   <br>
   <%= form.label :quarterly_rev %>
-  <%= form.text_field :quarterly_rev%>
+  <%= form.text_field :quarterly_rev, :value => @branch.quarterly_rev %>
   <br>
   <%= form.submit "Update Branch" %>
 <% end %>

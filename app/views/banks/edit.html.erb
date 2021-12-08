@@ -1,18 +1,18 @@
 <%= form_with url: "/banks/#{@bank.id}", method: :patch, local: true do |form| %>
   <%= form.label :name %>
-  <%= form.text_field :name %>
+  <%= form.text_field :name, :value => @bank.name  %>
   <br>
   <%= form.label :hq_city_state %>
-  <%= form.text_field :hq_city_state %>
+  <%= form.text_field :hq_city_state, :value => @bank.hq_city_state  %>
   <br>
   <%= form.label :fdic_ins %>
-  <%= form.text_field :fdic_ins %>
+  <%= form.text_field :fdic_ins, :value => @bank.fdic_ins  %>
   <br>
   <%= form.label :mobile_app %>
-  <%= form.text_field :mobile_app %>
+  <%= form.text_field :mobile_app, :value => @bank.mobile_app  %>
   <br>
   <%= form.label :size_by_assets %>
-  <%= form.text_field :size_by_assets %>
+  <%= form.text_field :size_by_assets, :value => @bank.size_by_assets  %>
   <br>
   <%= form.submit "Update Bank" %>
 <% end %>
