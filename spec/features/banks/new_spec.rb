@@ -44,8 +44,8 @@ RSpec.describe 'Bank Creation' do
 
     fill_in('Name', with: name)
     fill_in('Hq city state', with: hq_city_state)
-    fill_in('Fdic ins', with: fdic_ins)
-    fill_in('Mobile app', with: mobile_app)
+    choose(:fdic_ins_true)
+    choose(:mobile_app_true)
     fill_in('Size by assets', with: size_by_assets)
     click_button('Create Bank')
 

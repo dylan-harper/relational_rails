@@ -6,11 +6,17 @@
 <%= form.label :hq_city_state %>
 <%= form.text_field :hq_city_state %>
 <br>
-<%= form.label :fdic_ins %>
-<%= form.text_field :fdic_ins %>
+FDIC Insured?
+<%= form.label :fdic_ins_true, "True" %>
+<%= form.radio_button :fdic_ins, true %>
+<%= form.label :fdic_ins_false, "False" %>
+<%= form.radio_button :fdic_ins, false %>
 <br>
-<%= form.label :mobile_app %>
-<%= form.text_field :mobile_app %>
+Has a mobile app?
+<%= form.label :mobile_app_true, "True" %>
+<%= form.radio_button :mobile_app, true %>
+<%= form.label :mobile_app_false, "False" %>
+<%= form.radio_button :mobile_app, false %>
 <br>
 <%= form.label :size_by_assets %>
 <%= form.text_field :size_by_assets %>

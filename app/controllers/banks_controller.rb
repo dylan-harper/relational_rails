@@ -1,7 +1,6 @@
 class BanksController < ApplicationController
   def index
-    @banks = Bank.all
-    @banks = @banks.order("created_at").all
+    @banks = Bank.sort_by_created
   end
 
   def show

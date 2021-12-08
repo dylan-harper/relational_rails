@@ -48,6 +48,10 @@ RSpec.describe Bank, type: :model do
       expect(@bank_2.order_by_name).to eq([@branch_4, @branch_3, @branch_2])
     end
 
+    it '::sort_by_created' do
+      expect(Bank.sort_by_created).to eq([@bank_1, @bank_2, @bank_3])
+    end
+
 
   end
 end
