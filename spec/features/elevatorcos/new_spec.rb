@@ -27,7 +27,7 @@ RSpec.describe 'the elevatorcos new page' do
                                  address: '46112 Point View',
                                  owner: 'Salvador Datun',
                                  unit_type: 'freight',
-                                 num_units: '1',
+                                 num_units: 1,
                                  year_installed: '1996-01-01',
                                  needs_modernization?: true,
                                  last_serviced: '2021-10-16',
@@ -45,13 +45,13 @@ RSpec.describe 'the elevatorcos new page' do
 
   it 'can create a new elevator company' do
     visit '/elevatorcos/new'
-  
+
     fill_in('name', with: 'Sky Bros')
     fill_in('address', with: '7439 Upper Limit')
     fill_in('num_technicians', with: 7)
-    fill_in('offers_install', with: true)
-    fill_in('offers_service', with: true)
-    fill_in('offers_modernization', with: true)
+    choose('offers_install_true', option: true)
+    choose('offers_service_true', option: true)
+    choose('offers_modernization_true', option: true)
     click_button('Add Elevator Company')
     new_elevatorco_id = Elevatorco.last.id
     expect(current_path).to eq("/elevatorcos/#{new_elevatorco_id}")
