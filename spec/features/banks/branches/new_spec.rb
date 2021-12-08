@@ -38,7 +38,7 @@ RSpec.describe 'Branch Creation' do
 
      fill_in('Name', with: 'Lake Street')
      fill_in('Zip code', with: 98653)
-     fill_in('Has atm', with: true)
+     choose(:has_atm_true)
      fill_in('Quarterly rev', with: 500000)
      click_button('Create Branch')
 
