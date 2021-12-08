@@ -37,6 +37,13 @@
                                   offers_install?: false,
                                   offers_service?: true,
                                   offers_modernization?: false)
+@elevatorco3 = Elevatorco.create!(name: 'Sky Bros',
+                                  address: '7439 Upper Limit',
+                                  num_technicians: 7,
+                                  offers_install?: true,
+                                  offers_service?: true,
+                                  offers_modernization?: true)
+                                  
 @building = Building.create!(name: 'Tropical Resort',
                             address: '902 W Coconut Way',
                             owner: 'Zed Colada',
