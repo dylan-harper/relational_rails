@@ -1,5 +1,7 @@
 # Relational Rails  
 
+In the first paired project for Module 2 we worked collaboratively on our own Parent/Child, One-to-Many relationships, starting with a schema design and eventually working towards functional HTML.
+
 #### Ruby Version: 2.7.2
 #### Rails Version: 5.2.6
 #### PostgreSQL Version: 1.2.3
