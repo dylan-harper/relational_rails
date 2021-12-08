@@ -1,10 +1,17 @@
 <p><%= link_to "Banks Main", "/banks" %></p>
-
+----------------------------
 <h1> Branches </h1>
 
 <% @branches.each do |branch| %>
     <p>
-      <%= branch.name %> <%= link_to "Edit #{branch.name}", "/branches/#{branch.id}/edit" %>
-      <%= button_to "Delete #{branch.name}", "/branches/#{branch.id}", method: :delete %>
+      <a href='/branches/<%= branch.id %>'><%= branch.name %></a>
+      <p>Zip code: <%= branch.zip_code %></p>
+      <p>Has ATM: <%= branch.has_atm %></p>
+      <p>Quarterly Revenue: <%= branch.quarterly_rev %></p>
+      <br>
+      <button><%= link_to "Edit #{branch.name}", "/branches/#{branch.id}/edit" %></button>
+      <button><%= link_to "Delete #{branch.name}", "/branches/#{branch.id}", method: :delete %></button>
+      <br>
+      ----------------------------
     </p>
 <% end %>
