@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'the buildings show page' do
+RSpec.describe 'the buildings edit page' do
   before(:each) do
     @elevatorco = Elevatorco.create!(name: 'Vertical Transport',
                                     address: '5624 Elevation Dr.',
@@ -14,7 +14,7 @@ RSpec.describe 'the buildings show page' do
                                      offers_install?: false,
                                      offers_service?: true,
                                      offers_modernization?: false)
-    @building = Building.create!(name: 'Tropical Resort',
+    @building1 = Building.create!(name: 'Tropical Resort',
                                 address: '902 W Coconut Way',
                                 owner: 'Zed Colada',
                                 unit_type: 'passenger',
@@ -53,21 +53,47 @@ RSpec.describe 'the buildings show page' do
                                   needs_modernization?: true,
                                   last_serviced: '2021-02-06',
                                   elevatorco_id: @elevatorco.id)
-    visit "/buildings/#{@building4.id}"
-    click_link('Update Building Info')
-
+    visit "/buildings/#{@building4.id}/edit"
     fill_in('name', with: 'Westworld Mall')
     fill_in('address', with: '624 West Highway 72')
     fill_in('owner', with: 'Hugh North Jr.')
     fill_in('unit_type', with: 'LULA')
     fill_in('num_units', with: 4)
     fill_in('year_installed', with: '2008-01-01')
-    fill_in('needs_modernization', with: true)
+    choose('needs_modernization_true', option: true)
     fill_in('last_serviced', with: '2021-02-06')
-    click_button("Update")
+    click_button("Save")
 
     expect(current_path).to eq("/buildings/#{@building4.id}")
     expect(page).to have_content('Westworld Mall')
     expect(page).to_not have_content('Westward Mall')
+  end
+
+  it 'has a link to current page' do
+    visit "/buildings/#{@building1.id}/edit"
+    click_link("Update #{@building1.name}")
+
+    expect(current_path).to eq("/buildings/#{@building1.id}/edit")
+  end
+
+  it 'has a link to company index' do
+    visit "/buildings/#{@building1.id}/edit"
+    click_link('Elevator Companies')
+
+    expect(current_path).to eq('/elevatorcos')
+  end
+
+  it 'has a link to buildings index' do
+    visit "/buildings/#{@building1.id}/edit"
+    click_link('Buildings')
+
+    expect(current_path).to eq('/buildings')
+  end
+
+  it 'has a link to elevatorco buildings index' do
+    visit "/buildings/#{@building1.id}/edit"
+    click_link("Back to #{@building1.elevatorco.name} Service Contracts")
+
+    expect(current_path).to eq("/elevatorcos/#{@building1.elevatorco.id}/buildings")
   end
 end

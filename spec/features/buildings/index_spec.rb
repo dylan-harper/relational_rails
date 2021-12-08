@@ -43,15 +43,21 @@ RSpec.describe 'the building index page' do
                                 elevatorco_id: @elevatorco2.id)
     visit "/buildings"
   end
-  #
+  #Removed in place of true values per US 15
   # it 'displays all buildings' do
   #   expect(page).to have_content(@building.name && @building2.name)
   # end
 
   it 'links to elevatorcos main page' do
-    click_link("Elevator Companies Main")
+    click_link("Elevator Companies")
 
     expect(current_path).to eq('/elevatorcos')
+  end
+
+  it 'links to current page' do
+    click_link("Buildings")
+
+    expect(current_path).to eq('/buildings')
   end
 
   it 'only displays buildings with needs_modernization?: true' do
@@ -60,8 +66,14 @@ RSpec.describe 'the building index page' do
   end
 
   it 'links to edit page' do
-    first(:link, "Edit Building Info").click
+    first(:link, "Update Building Info").click
 
     expect(current_path).to eq("/buildings/#{@building2.id}/edit")
-  end 
+  end
+
+  it 'deletes record' do
+    first(:link, "Delete Building").click
+
+    expect(page).to_not have_content(@building2.name)
+  end
 end

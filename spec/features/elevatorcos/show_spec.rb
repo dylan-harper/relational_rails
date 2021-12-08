@@ -70,14 +70,28 @@ RSpec.describe 'the elevatorcos show page' do
     expect(page).to have_content("Number of service contracts: #{@elevatorco.buildings.count}")
   end
 
+  it 'displays created at' do
+    expect(page).to have_content(@elevatorco.created_at)
+  end
+
+  it 'displays updated at' do
+    expect(page).to have_content(@elevatorco.updated_at)
+  end
+
+  it 'links to current page' do
+    click_link("#{@elevatorco.name}")
+
+    expect(current_path).to eq("/elevatorcos/#{@elevatorco.id}")
+  end
+
   it 'links to buildings main page' do
-    click_link("Buildings Main")
+    click_link("Buildings")
 
     expect(current_path).to eq('/buildings')
   end
 
   it 'links to elevatorcos main page' do
-    click_link("Elevator Companies Main")
+    click_link("Elevator Companies")
 
     expect(current_path).to eq('/elevatorcos')
   end

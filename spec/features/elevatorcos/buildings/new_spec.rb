@@ -52,12 +52,40 @@ RSpec.describe 'Elevatorcos Buildings Index' do
     fill_in('unit_type', with: 'LULA')
     fill_in('num_units', with: 4)
     fill_in('year_installed', with: '2008-01-01')
-    fill_in('needs_modernization', with: true)
+    choose('needs_modernization_true', option: true)
     fill_in('last_serviced', with: '2021-02-06')
-    click_button("Create Building")
+    click_button("Add Service Contract for #{@elevatorco.name}")
 
     expect(current_path).to eq("/elevatorcos/#{@elevatorco.id}/buildings")
     expect(page).to have_content('Westworld Mall')
   end
+
+  it 'links to current page' do
+    visit "/elevatorcos/#{@elevatorco.id}/buildings/new"
+    click_link("Add #{@elevatorco.name} Service Contract")
+
+    expect(current_path).to eq("/elevatorcos/#{@elevatorco.id}/buildings/new")
+  end
+
+  it 'links to show page' do
+    visit "/elevatorcos/#{@elevatorco.id}/buildings/new"
+    click_link("Back to #{@elevatorco.name}")
+
+    expect(current_path).to eq("/elevatorcos/#{@elevatorco.id}")
+  end
+
+  it 'links to elevatorcos index' do
+    visit "/elevatorcos/#{@elevatorco.id}/buildings/new"
+    click_link("Elevator Companies")
+
+    expect(current_path).to eq('/elevatorcos')
+  end
+
+  it 'links to buildings index' do
+    visit "/elevatorcos/#{@elevatorco.id}/buildings/new"
+    click_link("Buildings")
+
+    expect(current_path).to eq('/buildings')
+  end 
 
 end

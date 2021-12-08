@@ -57,4 +57,25 @@ RSpec.describe 'the elevatorcos new page' do
     expect(current_path).to eq("/elevatorcos/#{new_elevatorco_id}")
     expect(page).to have_content('Sky Bros')
   end
+
+  it 'links to current page' do
+    visit '/elevatorcos/new'
+    click_link "Add Elevator Company"
+
+    expect(current_path).to eq('/elevatorcos/new')
+  end
+
+  it 'links to elevatorcos index' do
+    visit '/elevatorcos/new'
+    click_link("Back to Elevator Companies")
+
+    expect(current_path).to eq('/elevatorcos')
+  end
+
+  it 'links to buildings index' do
+    visit '/elevatorcos/new'
+    click_link("Buildings")
+
+    expect(current_path).to eq('/buildings')
+  end 
 end

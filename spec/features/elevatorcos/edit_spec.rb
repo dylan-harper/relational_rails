@@ -65,4 +65,32 @@ RSpec.describe 'elevatorcos edit' do
     expect(page).to have_content('Sky Brothers')
     expect(page).to_not have_content('Sky Bros')
   end
+
+  it 'links to current page' do
+    visit "elevatorcos/#{@elevatorco.id}/edit"
+    click_link("Update #{@elevatorco.name}")
+
+    expect(current_path).to eq("/elevatorcos/#{@elevatorco.id}/edit")
+  end
+
+  it 'links to show page' do
+    visit "elevatorcos/#{@elevatorco.id}/edit"
+    click_link("Back to #{@elevatorco.name}")
+
+    expect(current_path).to eq("/elevatorcos/#{@elevatorco.id}")
+  end
+
+  it 'links to elevatorco index' do
+    visit "elevatorcos/#{@elevatorco.id}/edit"
+    click_link("Elevator Companies")
+
+    expect(current_path).to eq('/elevatorcos')
+  end
+
+  it 'links to buildings index' do
+    visit "elevatorcos/#{@elevatorco.id}/edit"
+    click_link("Buildings")
+
+    expect(current_path).to eq('/buildings')
+  end 
 end

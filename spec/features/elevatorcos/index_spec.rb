@@ -71,13 +71,19 @@ RSpec.describe 'the elevatorcos index page' do
   end
 
   it 'links to buildings main page' do
-    click_link("Buildings Main")
+    click_link("Buildings")
 
     expect(current_path).to eq('/buildings')
   end
 
+  it 'links to current page' do
+    click_link("Elevator Companies")
+
+    expect(current_path).to eq('/elevatorcos')
+  end
+
   it 'links to elevatorco create form' do
-    click_link("New Elevator Company")
+    click_link("Add Elevator Company")
 
     expect(current_path).to eq('/elevatorcos/new')
   end
@@ -86,5 +92,11 @@ RSpec.describe 'the elevatorcos index page' do
     first(:link, "Edit Company Info").click
 
     expect(current_path).to eq("/elevatorcos/#{@elevatorco.id}/edit")
+  end
+
+  it 'can delete record' do
+    first(:link, "Delete Company").click
+
+    expect(page).to_not have_content(@elevatorco.name)
   end
 end
