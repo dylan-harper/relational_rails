@@ -27,7 +27,7 @@ RSpec.describe Branch do
                               bank_id: 4)
   end
 
-  it '#display_true' do
+  it '::display_true' do
 
 
     expect(Branch.display_true).to eq([@branch_1, @branch_3])

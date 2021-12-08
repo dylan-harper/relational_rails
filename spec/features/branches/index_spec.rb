@@ -61,4 +61,12 @@ RSpec.describe 'branches index' do
     expect(page).to have_content(@branch_1.name)
   end
 
+  it 'links to child edit page' do
+    visit "/branches"
+
+    click_link("Edit #{@branch_1.name}")
+
+    expect(current_path).to eq("/branches/#{@branch_1.id}/edit")
+  end
+
 end
