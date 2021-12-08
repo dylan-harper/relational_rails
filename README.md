@@ -12,5 +12,7 @@ In the first paired project for Module 2 we worked collaboratively on our own Pa
 ![pry v badge](https://img.shields.io/gem/v/pry?color=blue&label=pry)
 ![capybara v badge](https://img.shields.io/gem/v/capybara?color=cyan&label=capybara)
 ![launchy v badge](https://img.shields.io/gem/v/launchy?color=red&label=launchy)
+![shoulda-matchers v badge](https://img.shields.io/gem/v/shoulda-matchers?label=shoulda-matchers)
+![orderly v badge](https://img.shields.io/gem/v/orderly?label=orderly)
 ![rspec v badge](https://img.shields.io/gem/v/rspec?color=orange&label=rspec)
 ![simplecov v badge](https://img.shields.io/gem/v/simplecov?color=green&label=simplecov)
