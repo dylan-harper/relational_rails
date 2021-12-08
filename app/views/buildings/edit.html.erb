@@ -1,19 +1,29 @@
+<ul>
+  <li><a class="active" href=<%= "/buildings/#{@building.id}/edit" %>>Update <%= "#{@building.name}" %></a></li>
+  <li><a href=<%= "/elevatorcos/#{@building.elevatorco.id}/buildings" %>> Back to <%= "#{@building.elevatorco.name} Service Contracts" %></a></li>
+  <li><a href='/elevatorcos'>Elevator Companies</a></li>
+  <li><a href='/buildings'>Buildings</a></li>
+</ul>
+
 <%= form_with url: "/buildings/#{@building.id}/", method: :patch, local: true do |form| %>
   <%= form.label "Name:" %><br>
-  <%= form.text_field :name %><br>
+  <%= form.text_field :name, :value => @building.name %><br>
   <%= form.label "Address:" %><br>
-  <%= form.text_field :address %><br>
+  <%= form.text_field :address, :value => @building.address %><br>
   <%= form.label "Owner:"%><br>
-  <%= form.text_field :owner %><br>
+  <%= form.text_field :owner, :value => @building.owner %><br>
   <%= form.label "Equipment type:"%><br>
-  <%= form.text_field :unit_type %><br>
+  <%= form.text_field :unit_type, :value => @building.unit_type %><br>
   <%= form.label "Number of units:"%><br>
-  <%= form.text_field :num_units %><br>
+  <%= form.number_field :num_units, :value => @building.num_units %><br>
   <%= form.label "Year Installed:"%><br>
-  <%= form.text_field :year_installed %><br>
-  <%= form.label "Needs modernization?:"%><br>
-  <%= form.text_field :needs_modernization? %><br>
+  <%= form.date_field :year_installed, :value => @building.year_installed %><br>
+  Needs Modernization?<br>
+  <%= form.label :need_mod_true, "YES:"%>
+  <%= form.radio_button :needs_modernization?, true %>
+  <%= form.label :need_mod_false, "NO:"%>
+  <%= form.radio_button :needs_modernization?, false %><br>
   <%= form.label "Last service date:"%><br>
-  <%= form.text_field :last_serviced %><br>
-  <%= form.submit "Update" %>
+  <%= form.date_field :last_serviced, :value => @building.last_serviced %><br><br>
+  <%= form.submit "Save" %>
 <% end %>

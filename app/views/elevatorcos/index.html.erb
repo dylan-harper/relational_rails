@@ -1,8 +1,14 @@
-<a href='/buildings'>Buildings Main</a><br>
+<%= stylesheet_link_tag 'main.css' %>
+<ul>
+  <li><a class="active" href='/elevatorcos'>Elevator Companies</a></li>
+  <li><a href='/buildings'>Buildings</a></li>
+</ul>
 <h1> Elevator Companies </h1>
+<hr>
 <% @elevatorcos.each do |elevatorco| %>
   <h3><a href='/elevatorcos/<%= elevatorco.id %>'><%= elevatorco.name %></a></h3>
-  <%= elevatorco.created_at %>
-  <%= link_to "Edit Company Info", "/elevatorcos/#{elevatorco.id}/edit" %>
-<% end %>
-<%= link_to "New Elevator Company", "/elevatorcos/new" %>
+  <button><%= link_to "Edit Company Info", "/elevatorcos/#{elevatorco.id}/edit", method: :get %></button>
+  <button><%= link_to "Delete Company", "/elevatorcos/#{elevatorco.id}", method: :delete %></button><br>
+  <%= elevatorco.created_at %><br><hr>
+<% end %><br><br>
+<%= link_to "Add Elevator Company", "/elevatorcos/new" %>

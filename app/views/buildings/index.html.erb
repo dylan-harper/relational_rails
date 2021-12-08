@@ -1,6 +1,10 @@
-<a href='/elevatorcos'>Elevator Companies Main</a><br>
+<ul>
+  <li><a class="active" href='/buildings'>Buildings</a></li>
+  <li><a href='/elevatorcos'>Elevator Companies</a></li>
+</ul>
 <h1> Buildings </h1>
 <% @buildings.each do |building| %>
   <h3><a href='/buildings/<%= building.id %>'><%= building.name %></a></h3>
-  <%= link_to "Edit Building Info", "/buildings/#{building.id}/edit" %>
+  <button><%= link_to "Update Building Info", "/buildings/#{building.id}/edit" %></button>
+  <button><%= link_to "Delete Building", "/buildings/#{building.id}", method: :delete %></button>
 <% end %>

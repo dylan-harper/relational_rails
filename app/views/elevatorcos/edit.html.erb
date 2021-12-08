@@ -1,4 +1,12 @@
-<%= form_with url: "/elevatorcos/#{@elevatorco.id}", method: :patch, local: true do |form| %>
+<%= stylesheet_link_tag 'main.css' %>
+<ul>
+  <li><a class="active" href=<%= "/elevatorcos/#{@elevatorco.id}/edit" %>>Update <%= "#{@elevatorco.name}" %></a></li>
+  <li><a href=<%= "/elevatorcos/#{@elevatorco.id}" %>>Back to <%= "#{@elevatorco.name}" %></a></li>
+  <li><a href='/elevatorcos'>Elevator Companies</a></li>
+  <li><a href='/buildings'>Buildings</a></li>
+</ul>
+
+<%= form_with url: "/elevatorcos/#{@elevatorco.id}/", method: :patch, local: true do |form| %>
   <%= form.label "Name:" %><br>
   <%= form.text_field :name, :value => @elevatorco.name %><br>
   <%= form.label "Address:" %><br>

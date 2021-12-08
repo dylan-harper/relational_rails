@@ -1,3 +1,9 @@
+<%= stylesheet_link_tag 'main.css' %>
+<ul>
+  <li><a class="active" href='/elevatorcos/new'>Add Elevator Company</a></li>
+  <li><a href='/elevatorcos'>Back to Elevator Companies</a></li>
+  <li><a href='/buildings'>Buildings</a></li>
+</ul>
 <%= form_with url: '/elevatorcos', method: :post, local: true do |form| %>
   <%= form.label "Name:" %><br>
   <%= form.text_field :name %><br>
