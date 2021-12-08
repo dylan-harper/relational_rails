@@ -11,7 +11,7 @@ class ElevatorcosController < ApplicationController
   end
 
   def create
-    new = Elevatorco.create(elevatorco_params)
+    new = Elevatorco.create!(elevatorco_params)
     redirect_to "/elevatorcos/#{new.id}"
   end
 
@@ -21,7 +21,7 @@ class ElevatorcosController < ApplicationController
 
   def update
     @elevatorco = Elevatorco.find(params[:id])
-    @elevatorco.update(elevatorco_params)
+    @elevatorco.update!(elevatorco_params)
     redirect_to "/elevatorcos/#{@elevatorco.id}"
   end
 

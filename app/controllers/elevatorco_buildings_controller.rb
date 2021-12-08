@@ -16,7 +16,7 @@ class ElevatorcoBuildingsController < ApplicationController
 
   def create
     @elevatorco = Elevatorco.find(params[:id])
-    @building = @elevatorco.buildings.create(building_params)
+    @building = @elevatorco.buildings.create!(building_params)
     redirect_to "/elevatorcos/#{@elevatorco.id}/buildings"
   end
 
