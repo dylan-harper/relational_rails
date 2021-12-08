@@ -15,6 +15,11 @@ RSpec.describe Bank, type: :model do
                             fdic_ins: true,
                             mobile_app: true,
                             size_by_assets: 3757576000)
+      @test_bank = Bank.create!(name: 'Wells Fargo',
+                            hq_city_state: 'San Francisco, California',
+                            fdic_ins: true,
+                            mobile_app: true,
+                            size_by_assets: 1303558000)
       @bank_3 = Bank.create!(name: 'BoA',
                               hq_city_state: 'Charlotte, North Carolina',
                               fdic_ins: true,
@@ -49,7 +54,13 @@ RSpec.describe Bank, type: :model do
     end
 
     it '::sort_by_created' do
-      expect(Bank.sort_by_created).to eq([@bank_1, @bank_2, @bank_3])
+      test_bank_2 = Bank.create!(name: 'Wells Fargo',
+                            hq_city_state: 'San Francisco, California',
+                            fdic_ins: true,
+                            mobile_app: true,
+                            size_by_assets: 1303558000)
+
+      expect(Bank.sort_by_created).to eq([@bank_1, @bank_2, @test_bank, @bank_3, test_bank_2])
     end
 
 
